@@ -11,6 +11,7 @@ import org.northcoders.recordshopapp.model.getalbums.GetAlbumsResponse;
 import org.northcoders.recordshopapp.service.AlbumApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstance;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -46,6 +47,15 @@ public class AlbumRepository {
                     List<Album> albums = response.body().getAlbums();
                     mutableLiveAlbumsData.setValue(albums);
 
+                    Log.i(
+                            String.format(
+                                    "%s | %s",
+                                    response.body().getStatus(),
+                                    response.body().getMessage()
+                            ),
+                            Objects.requireNonNull(response.body().getMessage())
+                    );
+
                     return;
                 }
 
@@ -53,7 +63,12 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<GetAlbumsResponse> call, Throwable t) {
-                Log.e("GET /albums: ", Objects.requireNonNull(t.getMessage()));
+//                try {
+//                    Log.e("TRY/CATCH", call.execute().body().getMessage());
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+                Log.e("GET /albums", Objects.requireNonNull(t.getMessage()));
             }
         });
 
