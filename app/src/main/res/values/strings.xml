@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecordShopApp</string>
+    <string name="banner_image_alt_text">Record Shop App Banner Image</string>
 </resources>
