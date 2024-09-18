@@ -6,8 +6,8 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.recordshopapp.model.ResponseStatus;
-import org.northcoders.recordshopapp.model.get_albums.Album;
-import org.northcoders.recordshopapp.model.get_albums.GetAlbumsResponse;
+import org.northcoders.recordshopapp.model.getalbums.Album;
+import org.northcoders.recordshopapp.model.getalbums.GetAlbumsResponse;
 import org.northcoders.recordshopapp.service.AlbumApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstance;
 
@@ -53,7 +53,7 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<GetAlbumsResponse> call, Throwable t) {
-                Log.e("Error connecting into Record Shop API Path: /albums: ", Objects.requireNonNull(t.getMessage()));
+                Log.e("GET /albums: ", Objects.requireNonNull(t.getMessage()));
             }
         });
 
