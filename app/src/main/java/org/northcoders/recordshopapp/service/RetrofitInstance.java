@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInstance {
     private static Retrofit retrofit = null;
 
-    private static final String BASE_URL = "https://localhost:8080/api/v1/album/";
+    private static final String BASE_URL = "https://localhost:8080/api/v1/";
 
     public static AlbumApiService getService() {
 
