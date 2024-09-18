@@ -1,9 +1,11 @@
 package org.northcoders.recordshopapp.model.getalbums;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.northcoders.recordshopapp.BR;
 import org.northcoders.recordshopapp.model.ResponseStatus;
 
 import java.util.Date;
@@ -30,35 +32,43 @@ public class GetAlbumsResponse extends BaseObservable {
         this.albums = albums;
     }
 
+    @Bindable
     public Date getTimestamp() {
         return timestamp;
     }
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+        notifyPropertyChanged(BR.timestamp);
     }
 
+    @Bindable
     public ResponseStatus getStatus() {
         return status;
     }
 
     public void setStatus(ResponseStatus status) {
         this.status = status;
+        notifyPropertyChanged(BR.status);
     }
 
+    @Bindable
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+        notifyPropertyChanged(BR.message);
     }
 
+    @Bindable
     public List<Album> getAlbums() {
         return albums;
     }
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+        notifyPropertyChanged(BR.albums);
     }
 }

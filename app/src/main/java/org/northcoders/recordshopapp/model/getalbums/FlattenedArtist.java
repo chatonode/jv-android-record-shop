@@ -1,37 +1,44 @@
 package org.northcoders.recordshopapp.model.getalbums;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.google.gson.annotations.SerializedName;
+
+import org.northcoders.recordshopapp.BR;
 
 public class FlattenedArtist extends BaseObservable {
 
     @SerializedName(value = "id")
-    private Long id;
+    private Long artistId;
     @SerializedName(value = "fullName")
     private String fullName;
 
     public FlattenedArtist() {
     }
 
-    public FlattenedArtist(Long id, String fullName) {
-        this.id = id;
+    public FlattenedArtist(Long artistId, String fullName) {
+        this.artistId = artistId;
         this.fullName = fullName;
     }
 
-    public Long getId() {
-        return id;
+    @Bindable
+    public Long getArtistId() {
+        return artistId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setArtistId(Long artistId) {
+        this.artistId = artistId;
+        notifyPropertyChanged(BR.artistId);
     }
 
+    @Bindable
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+        notifyPropertyChanged(BR.fullName);
     }
 }
