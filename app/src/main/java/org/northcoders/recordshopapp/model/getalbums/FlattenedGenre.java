@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model.get_albums;
+package org.northcoders.recordshopapp.model.getalbums;
 
 import androidx.databinding.BaseObservable;
 
