@@ -347,10 +347,32 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <!--    TODO: Currency: Radio Button?       -->
         <!--    TODO: Do it inside price in pences  -->
 
         <!--    TODO: Format: Radio Group & Buttons?       -->
 
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:hint="Add Album"
+            android:text="Add Album"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_album_field_price_in_pences" />
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="5dp"
+            android:src="@drawable/return_fab_icon"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
