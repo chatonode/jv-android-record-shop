@@ -20,6 +20,6 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<Album>> getAllAlbums() {
-        return albumRepository.getMutableLiveAlbumsData();
+        return albumRepository.getAllAlbumsData();
     }
 }
