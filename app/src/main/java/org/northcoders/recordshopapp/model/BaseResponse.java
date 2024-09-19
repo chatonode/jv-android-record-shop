@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model.getalbums;
+package org.northcoders.recordshopapp.model;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -6,13 +6,8 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
-import org.northcoders.recordshopapp.model.ResponseStatus;
 
-import java.util.Date;
-import java.util.List;
-
-public class GetAlbumsResponse extends BaseObservable {
-
+public abstract class BaseResponse<T> extends BaseObservable {
     @SerializedName(value = "timestamp")
     private String timestamp;
     @SerializedName(value = "status")
@@ -20,16 +15,16 @@ public class GetAlbumsResponse extends BaseObservable {
     @SerializedName(value = "message")
     private String message;
     @SerializedName(value = "data")
-    private List<Album> albums;
+    private T data;
 
-    public GetAlbumsResponse() {
+    public BaseResponse() {
     }
 
-    public GetAlbumsResponse(String timestamp, ResponseStatus status, String message, List<Album> albums) {
+    public BaseResponse(String timestamp, ResponseStatus status, String message, T data) {
         this.timestamp = timestamp;
         this.status = status;
         this.message = message;
-        this.albums = albums;
+        this.data = data;
     }
 
     @Bindable
@@ -63,12 +58,12 @@ public class GetAlbumsResponse extends BaseObservable {
     }
 
     @Bindable
-    public List<Album> getAlbums() {
-        return albums;
+    public T getData() {
+        return data;
     }
 
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-        notifyPropertyChanged(BR.albums);
+    public void setData(T data) {
+        this.data = data;
+        notifyPropertyChanged(BR.data);
     }
 }

@@ -5,13 +5,11 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import org.northcoders.recordshopapp.model.ResponseStatus;
-import org.northcoders.recordshopapp.model.getalbums.Album;
-import org.northcoders.recordshopapp.model.getalbums.GetAlbumsResponse;
+import org.northcoders.recordshopapp.model.album.Album;
+import org.northcoders.recordshopapp.model.api.getalbums.GetAlbumsResponse;
 import org.northcoders.recordshopapp.service.AlbumApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstance;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,7 +42,7 @@ public class AlbumRepository {
 //                            Objects.requireNonNull(response.body().getMessage())
 //                    );
 //                } else if (Objects.equals(response.body().getMessage(), ResponseStatus.SUCCESS.name())) {
-                List<Album> albums = response.body().getAlbums();
+                List<Album> albums = response.body().getData();
                 mutableLiveAlbumsData.setValue(albums);
 
                 Log.i(

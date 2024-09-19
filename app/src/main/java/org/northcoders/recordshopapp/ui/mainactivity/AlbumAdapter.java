@@ -2,22 +2,16 @@ package org.northcoders.recordshopapp.ui.mainactivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.AlbumItemLayoutBinding;
-import org.northcoders.recordshopapp.model.getalbums.Album;
+import org.northcoders.recordshopapp.model.album.Album;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemViewHolder> {

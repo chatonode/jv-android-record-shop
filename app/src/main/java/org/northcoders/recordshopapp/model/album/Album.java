@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model.getalbums;
+package org.northcoders.recordshopapp.model.album;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -9,7 +9,6 @@ import org.northcoders.recordshopapp.BR;
 import org.northcoders.recordshopapp.model.Currency;
 import org.northcoders.recordshopapp.model.Format;
 
-import java.util.Date;
 import java.util.List;
 
 public class Album extends BaseObservable {

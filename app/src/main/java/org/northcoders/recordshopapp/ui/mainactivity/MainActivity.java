@@ -1,13 +1,8 @@
 package org.northcoders.recordshopapp.ui.mainactivity;
 
-import android.app.Application;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.ActivityMainBinding;
-import org.northcoders.recordshopapp.model.getalbums.Album;
-import org.northcoders.recordshopapp.repository.AlbumRepository;
+import org.northcoders.recordshopapp.model.album.Album;
 
 import java.util.List;
 

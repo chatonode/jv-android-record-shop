@@ -8,7 +8,7 @@
 
         <variable
             name="album"
-            type="org.northcoders.recordshopapp.model.getalbums.Album" />
+            type="org.northcoders.recordshopapp.model.album.Album" />
     </data>
 
 

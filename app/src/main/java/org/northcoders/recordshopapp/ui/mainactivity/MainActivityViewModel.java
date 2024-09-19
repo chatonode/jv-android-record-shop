@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import org.northcoders.recordshopapp.model.getalbums.Album;
+import org.northcoders.recordshopapp.model.album.Album;
 import org.northcoders.recordshopapp.repository.AlbumRepository;
 
 import java.util.List;
