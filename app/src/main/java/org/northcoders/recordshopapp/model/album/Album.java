@@ -6,8 +6,8 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
-import org.northcoders.recordshopapp.model.Currency;
-import org.northcoders.recordshopapp.model.Format;
+import org.northcoders.recordshopapp.model.enums.album.Currency;
+import org.northcoders.recordshopapp.model.enums.album.Format;
 
 import java.util.List;
 

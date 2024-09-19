@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model;
+package org.northcoders.recordshopapp.model.enums.api;
 
 public enum ResponseStatus {
     SUCCESS,

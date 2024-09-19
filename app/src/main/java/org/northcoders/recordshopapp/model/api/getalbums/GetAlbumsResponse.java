@@ -1,7 +1,7 @@
 package org.northcoders.recordshopapp.model.api.getalbums;
 
-import org.northcoders.recordshopapp.model.BaseResponse;
-import org.northcoders.recordshopapp.model.ResponseStatus;
+import org.northcoders.recordshopapp.model.api.BaseResponse;
+import org.northcoders.recordshopapp.model.enums.api.ResponseStatus;
 import org.northcoders.recordshopapp.model.album.Album;
 
 import java.util.List;

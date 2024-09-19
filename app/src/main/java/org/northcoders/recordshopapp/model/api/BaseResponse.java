@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model;
+package org.northcoders.recordshopapp.model.api;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -6,6 +6,7 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
+import org.northcoders.recordshopapp.model.enums.api.ResponseStatus;
 
 public abstract class BaseResponse<T> extends BaseObservable {
     @SerializedName(value = "timestamp")

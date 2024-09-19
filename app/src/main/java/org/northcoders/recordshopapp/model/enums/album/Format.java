@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model;
+package org.northcoders.recordshopapp.model.enums.album;
 
 public enum Format {
     Vinyl,
