@@ -18,9 +18,9 @@ public class Album extends BaseObservable {
     private Long id;
     @SerializedName(value = "title")
     private String title;
-    @SerializedName(value = "artistIds")
+    @SerializedName(value = "artists")
     private List<FlattenedArtist> artists;
-    @SerializedName(value = "genreIds")
+    @SerializedName(value = "genres")
     private List<FlattenedGenre> genres;
     @SerializedName(value = "durationInSeconds")
     private Integer durationInSeconds;
@@ -39,14 +39,14 @@ public class Album extends BaseObservable {
     @SerializedName(value = "format")
     private Format format;
     @SerializedName(value = "createdDate")
-    private Date createdDate;
+    private String createdDate;
     @SerializedName(value = "updatedDate")
-    private Date updatedDate;
+    private String updatedDate;
 
     public Album() {
     }
 
-    public Album(Long id, String title, List<FlattenedArtist> artists, List<FlattenedGenre> genres, Integer durationInSeconds, String imageUrl, Integer releaseYear, String publisher, Integer priceInPences, Currency currency, Integer quantityInStock, Format format, Date createdDate, Date updatedDate) {
+    public Album(Long id, String title, List<FlattenedArtist> artists, List<FlattenedGenre> genres, Integer durationInSeconds, String imageUrl, Integer releaseYear, String publisher, Integer priceInPences, Currency currency, Integer quantityInStock, Format format, String createdDate, String updatedDate) {
         this.id = id;
         this.title = title;
         this.artists = artists;
@@ -184,21 +184,21 @@ public class Album extends BaseObservable {
     }
 
     @Bindable
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
         notifyPropertyChanged(BR.createdDate);
     }
 
     @Bindable
-    public Date getUpdatedDate() {
+    public String getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
+    public void setUpdatedDate(String updatedDate) {
         this.updatedDate = updatedDate;
         notifyPropertyChanged(BR.updatedDate);
     }

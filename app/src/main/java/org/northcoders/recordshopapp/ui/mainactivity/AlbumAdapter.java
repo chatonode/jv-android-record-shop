@@ -17,6 +17,7 @@ import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.AlbumItemLayoutBinding;
 import org.northcoders.recordshopapp.model.getalbums.Album;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemViewHolder> {

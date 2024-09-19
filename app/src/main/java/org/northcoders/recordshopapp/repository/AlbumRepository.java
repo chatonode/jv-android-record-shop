@@ -34,30 +34,26 @@ public class AlbumRepository {
         call.enqueue(new Callback<GetAlbumsResponse>() {
             @Override
             public void onResponse(Call<GetAlbumsResponse> call, Response<GetAlbumsResponse> response) {
-                if (Objects.equals(response.body().getMessage(), ResponseStatus.ERROR.name())) {
-                    Log.e(
-                            String.format(
-                                    "%s | %s",
-                                    response.body().getStatus(),
-                                    response.body().getMessage()
-                            ),
-                            Objects.requireNonNull(response.body().getMessage())
-                    );
-                } else if (Objects.equals(response.body().getMessage(), ResponseStatus.SUCCESS.name())) {
-                    List<Album> albums = response.body().getAlbums();
-                    mutableLiveAlbumsData.setValue(albums);
+//                if (Objects.equals(response.body().getMessage(), ResponseStatus.ERROR.name())) {
+//                    Log.e(
+//                            String.format(
+//                                    "%s | %s",
+//                                    response.body().getStatus(),
+//                                    response.body().getMessage()
+//                            ),
+//                            Objects.requireNonNull(response.body().getMessage())
+//                    );
+//                } else if (Objects.equals(response.body().getMessage(), ResponseStatus.SUCCESS.name())) {
+                List<Album> albums = response.body().getAlbums();
+                mutableLiveAlbumsData.setValue(albums);
 
-                    Log.i(
-                            String.format(
-                                    "%s | %s",
-                                    response.body().getStatus(),
-                                    response.body().getMessage()
-                            ),
-                            Objects.requireNonNull(response.body().getMessage())
-                    );
+                Log.i(
+                        response.body().getStatus().name(),
+                        Objects.requireNonNull(response.body().getMessage())
+                );
 
-                    return;
-                }
+                return;
+//                }
 
             }
 
@@ -69,6 +65,10 @@ public class AlbumRepository {
 //                    throw new RuntimeException(e);
 //                }
                 Log.e("GET /albums", Objects.requireNonNull(t.getMessage()));
+
+                Log.e("EXTRA INFO1", Objects.requireNonNull(String.valueOf(t)));
+                Log.e("EXTRA INFO2", Objects.requireNonNull(String.valueOf(t.getCause())));
+
             }
         });
 

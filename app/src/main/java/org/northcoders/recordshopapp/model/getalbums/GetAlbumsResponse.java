@@ -14,7 +14,7 @@ import java.util.List;
 public class GetAlbumsResponse extends BaseObservable {
 
     @SerializedName(value = "timestamp")
-    private Date timestamp;
+    private String timestamp;
     @SerializedName(value = "status")
     private ResponseStatus status;
     @SerializedName(value = "message")
@@ -25,7 +25,7 @@ public class GetAlbumsResponse extends BaseObservable {
     public GetAlbumsResponse() {
     }
 
-    public GetAlbumsResponse(Date timestamp, ResponseStatus status, String message, List<Album> albums) {
+    public GetAlbumsResponse(String timestamp, ResponseStatus status, String message, List<Album> albums) {
         this.timestamp = timestamp;
         this.status = status;
         this.message = message;
@@ -33,11 +33,11 @@ public class GetAlbumsResponse extends BaseObservable {
     }
 
     @Bindable
-    public Date getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
         notifyPropertyChanged(BR.timestamp);
     }
