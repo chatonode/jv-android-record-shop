@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">RecordShopApp</string>
     <string name="banner_image_alt_text">Record Shop App Banner Image</string>
+    <string name="album_field_title_icon_alt_text">Album Title Icon</string>
+    <string name="album_field_artists_icon_alt_text">Album Artists Icon</string>
+    <string name="album_field_genres_icon_alt_text">Album Genres Icon</string>
+    <string name="album_field_duration_in_seconds_icon_alt_text">Album Duration in Seconds Icon</string>
+    <string name="album_field_image_url_icon_alt_text">Album Image URL Icon</string>
+    <string name="album_field_release_year_icon_alt_text">Album Release Year Icon</string>
+    <string name="album_field_publisher_icon_alt_text">Album Publisher Icon</string>
+    <string name="album_field_price_in_pences_icon_alt_text">Album Price in Pences Icon</string>
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+<!--    <string name="album_field__icon_alt_text"></string>-->
+
 </resources>
