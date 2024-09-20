@@ -29,16 +29,18 @@ public class AddNewAlbumClickHandler {
         boolean areArtistsInvalid = album.getArtists() == null || album.getArtists().isEmpty();
         boolean areGenresInvalid = album.getGenres() == null || album.getGenres().isEmpty();
         boolean isDurationInvalid = album.getDurationInSeconds() == null || album.getDurationInSeconds() < 1;
-        boolean isImageUrlInvalid = album.getImageUrl() == null || Pattern.matches(DataValidation.URL_REGEX, album.getImageUrl());
-        boolean isReleaseYearInvalid = album.getReleaseYear() == null || album.getReleaseYear() < 1900;
-        boolean isPublisherInvalid = album.getPublisher() == null || album.getPublisher().isBlank();
+        boolean isImageUrlInvalid = album.getImageUrl() != null && Pattern.matches(DataValidation.URL_REGEX, album.getImageUrl());
+        boolean isReleaseYearInvalid = album.getReleaseYear() != null && album.getReleaseYear() < 1900;
+        boolean isPublisherInvalid = album.getPublisher() != null && album.getPublisher().isBlank();
         boolean isPriceInvalid = album.getPriceInPences() == null || album.getPriceInPences() < 1;
         boolean isCurrencyInvalid = album.getCurrency() == null;
         boolean isFormatInvalid = album.getFormat() == null;
 
-        boolean areRequiredFieldsInvalid = isTitleInvalid || areArtistsInvalid || areGenresInvalid || isDurationInvalid || isPriceInvalid || isCurrencyInvalid || isFormatInvalid;
+        boolean areFieldsInvalid = isTitleInvalid || areArtistsInvalid || areGenresInvalid || isDurationInvalid
+                || isImageUrlInvalid || isReleaseYearInvalid || isPublisherInvalid // nullables
+                || isPriceInvalid || isCurrencyInvalid || isFormatInvalid;
 
-        if (areRequiredFieldsInvalid) {
+        if (areFieldsInvalid) {
             Toast.makeText(context, "Invalid field(s)", Toast.LENGTH_SHORT).show();
             return;
         }
