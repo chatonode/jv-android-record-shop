@@ -6,8 +6,8 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
-import org.northcoders.recordshopapp.model.enums.album.Currency;
-import org.northcoders.recordshopapp.model.enums.album.Format;
+import org.northcoders.recordshopapp.model.enums.Currency;
+import org.northcoders.recordshopapp.model.enums.Format;
 
 import java.util.List;
 
@@ -18,9 +18,9 @@ public class Album extends BaseObservable {
     @SerializedName(value = "title")
     private String title;
     @SerializedName(value = "artists")
-    private List<FlattenedArtist> artists;
+    private List<ArtistSummary> artists;
     @SerializedName(value = "genres")
-    private List<FlattenedGenre> genres;
+    private List<GenreSummary> genres;
     @SerializedName(value = "durationInSeconds")
     private Integer durationInSeconds;
     @SerializedName(value = "imageUrl")
@@ -45,7 +45,7 @@ public class Album extends BaseObservable {
     public Album() {
     }
 
-    public Album(Long id, String title, List<FlattenedArtist> artists, List<FlattenedGenre> genres, Integer durationInSeconds, String imageUrl, Integer releaseYear, String publisher, Integer priceInPences, Currency currency, Integer quantityInStock, Format format, String createdDate, String updatedDate) {
+    public Album(Long id, String title, List<ArtistSummary> artists, List<GenreSummary> genres, Integer durationInSeconds, String imageUrl, Integer releaseYear, String publisher, Integer priceInPences, Currency currency, Integer quantityInStock, Format format, String createdDate, String updatedDate) {
         this.id = id;
         this.title = title;
         this.artists = artists;
@@ -83,21 +83,21 @@ public class Album extends BaseObservable {
     }
 
     @Bindable
-    public List<FlattenedArtist> getArtists() {
+    public List<ArtistSummary> getArtists() {
         return artists;
     }
 
-    public void setArtists(List<FlattenedArtist> artists) {
+    public void setArtists(List<ArtistSummary> artists) {
         this.artists = artists;
         notifyPropertyChanged(BR.artists);
     }
 
     @Bindable
-    public List<FlattenedGenre> getGenres() {
+    public List<GenreSummary> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<FlattenedGenre> genres) {
+    public void setGenres(List<GenreSummary> genres) {
         this.genres = genres;
         notifyPropertyChanged(BR.genres);
     }

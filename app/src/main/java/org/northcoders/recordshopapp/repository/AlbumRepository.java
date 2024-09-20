@@ -7,12 +7,12 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.recordshopapp.model.album.Album;
-import org.northcoders.recordshopapp.model.api.getalbums.GetAlbumsResponse;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumResponse;
-import org.northcoders.recordshopapp.model.enums.api.ResponseStatus;
+import org.northcoders.recordshopapp.dto.album.get.all.GetAlbumsResponse;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumResponse;
+import org.northcoders.recordshopapp.dto.enums.ApiResponseStatus;
 import org.northcoders.recordshopapp.service.AlbumApiService;
-import org.northcoders.recordshopapp.service.RetrofitInstance;
+import org.northcoders.recordshopapp.service.RetrofitInstanceProvider;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +30,7 @@ public class AlbumRepository {
     }
 
     public MutableLiveData<List<Album>> getAllAlbums() {
-        AlbumApiService apiService = RetrofitInstance.getService();
+        AlbumApiService apiService = RetrofitInstanceProvider.getService();
         Call<GetAlbumsResponse> call = apiService.getAllAlbums();
 
         call.enqueue(new Callback<GetAlbumsResponse>() {
@@ -78,7 +78,7 @@ public class AlbumRepository {
     }
 
     public void postNewAlbum(NewAlbumRequestBody albumRequestBody) {
-        AlbumApiService apiService = RetrofitInstance.getService();
+        AlbumApiService apiService = RetrofitInstanceProvider.getService();
         Call<NewAlbumResponse> call = apiService.postAlbum(albumRequestBody);
 
         call.enqueue(new Callback<NewAlbumResponse>() {
@@ -86,7 +86,7 @@ public class AlbumRepository {
             public void onResponse(Call<NewAlbumResponse> call, Response<NewAlbumResponse> response) {
                 if (!response.isSuccessful()
                         || response.body() == null
-                        || response.message().equals(ResponseStatus.ERROR.name())
+                        || response.message().equals(ApiResponseStatus.ERROR.name())
                 ) {
 
                     Toast.makeText(

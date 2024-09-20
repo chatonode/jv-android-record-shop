@@ -5,8 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
-import org.northcoders.recordshopapp.model.album.Album;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;

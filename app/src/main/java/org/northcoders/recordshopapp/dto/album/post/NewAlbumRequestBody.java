@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model.api.newalbum;
+package org.northcoders.recordshopapp.dto.album.post;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -6,10 +6,8 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
-import org.northcoders.recordshopapp.model.album.FlattenedArtist;
-import org.northcoders.recordshopapp.model.album.FlattenedGenre;
-import org.northcoders.recordshopapp.model.enums.album.Currency;
-import org.northcoders.recordshopapp.model.enums.album.Format;
+import org.northcoders.recordshopapp.model.enums.Currency;
+import org.northcoders.recordshopapp.model.enums.Format;
 
 import java.util.List;
 

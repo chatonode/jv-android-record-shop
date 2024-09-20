@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.recordshopapp.model.album.Album;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.repository.AlbumRepository;
 
 import java.util.List;

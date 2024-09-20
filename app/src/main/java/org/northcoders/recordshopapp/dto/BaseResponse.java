@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.model.api;
+package org.northcoders.recordshopapp.dto;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -6,26 +6,20 @@ import androidx.databinding.Bindable;
 import com.google.gson.annotations.SerializedName;
 
 import org.northcoders.recordshopapp.BR;
-import org.northcoders.recordshopapp.model.enums.api.ResponseStatus;
+import org.northcoders.recordshopapp.dto.enums.ApiResponseStatus;
 
-public abstract class BaseResponse<T> extends BaseObservable {
+public abstract class BaseResponse extends BaseObservable {
     @SerializedName(value = "timestamp")
     private String timestamp;
     @SerializedName(value = "status")
-    private ResponseStatus status;
+    private ApiResponseStatus status;
     @SerializedName(value = "message")
     private String message;
-    @SerializedName(value = "data")
-    private T data;
 
-    public BaseResponse() {
-    }
-
-    public BaseResponse(String timestamp, ResponseStatus status, String message, T data) {
+    public BaseResponse(String timestamp, ApiResponseStatus status, String message) {
         this.timestamp = timestamp;
         this.status = status;
         this.message = message;
-        this.data = data;
     }
 
     @Bindable
@@ -39,11 +33,11 @@ public abstract class BaseResponse<T> extends BaseObservable {
     }
 
     @Bindable
-    public ResponseStatus getStatus() {
+    public ApiResponseStatus getStatus() {
         return status;
     }
 
-    public void setStatus(ResponseStatus status) {
+    public void setStatus(ApiResponseStatus status) {
         this.status = status;
         notifyPropertyChanged(BR.status);
     }
@@ -58,13 +52,4 @@ public abstract class BaseResponse<T> extends BaseObservable {
         notifyPropertyChanged(BR.message);
     }
 
-    @Bindable
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-        notifyPropertyChanged(BR.data);
-    }
 }

@@ -1,8 +1,8 @@
 package org.northcoders.recordshopapp.service;
 
-import org.northcoders.recordshopapp.model.api.getalbums.GetAlbumsResponse;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumResponse;
+import org.northcoders.recordshopapp.dto.album.get.all.GetAlbumsResponse;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

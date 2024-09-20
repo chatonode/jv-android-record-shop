@@ -7,7 +7,7 @@
 
         <variable
             name="albumInputs"
-            type="org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody" />
+            type="org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody" />
 
         <variable
             name="clickHandler"

@@ -9,12 +9,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.ActivityAddNewAlbumBinding;
-import org.northcoders.recordshopapp.model.album.Album;
-import org.northcoders.recordshopapp.model.album.FlattenedArtist;
-import org.northcoders.recordshopapp.model.album.FlattenedGenre;
-import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
-import org.northcoders.recordshopapp.model.enums.album.Currency;
-import org.northcoders.recordshopapp.model.enums.album.Format;
+import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
+import org.northcoders.recordshopapp.model.enums.Currency;
+import org.northcoders.recordshopapp.model.enums.Format;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 
 import java.util.ArrayList;
