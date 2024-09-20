@@ -11,6 +11,7 @@
     <string name="album_field_price_in_pences_icon_alt_text">Album Price in Pences Icon</string>
 
     <string name="return_fab_icon_alt_text">Return to Main Menu Icon</string>
+    <string name="add_new_album_icon_alt_text">Add New Album Icon</string>
 
 
 </resources>
