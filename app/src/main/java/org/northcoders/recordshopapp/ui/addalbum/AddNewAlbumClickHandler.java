@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.northcoders.recordshopapp.model.album.Album;
+import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;
@@ -14,27 +15,27 @@ import java.util.regex.Pattern;
 
 public class AddNewAlbumClickHandler {
 
-    private Album album;
+    private NewAlbumRequestBody newAlbumRequestBody;
     private Context context;
     private MainActivityViewModel viewModel;
 
-    public AddNewAlbumClickHandler(Album album, Context context, MainActivityViewModel viewModel) {
-        this.album = album;
+    public AddNewAlbumClickHandler(NewAlbumRequestBody newAlbumRequestBody, Context context, MainActivityViewModel viewModel) {
+        this.newAlbumRequestBody = newAlbumRequestBody;
         this.context = context;
         this.viewModel = viewModel;
     }
 
     public void onSubmitButtonClicked(View view) {
-        boolean isTitleInvalid = album.getTitle() == null || album.getTitle().isBlank();
-        boolean areArtistsInvalid = album.getArtists() == null || album.getArtists().isEmpty();
-        boolean areGenresInvalid = album.getGenres() == null || album.getGenres().isEmpty();
-        boolean isDurationInvalid = album.getDurationInSeconds() == null || album.getDurationInSeconds() < 30;
-        boolean isImageUrlInvalid = album.getImageUrl() != null && !album.getImageUrl().isBlank() && !Pattern.matches(DataValidation.URL_REGEX, album.getImageUrl());
-        boolean isReleaseYearInvalid = album.getReleaseYear() != null && album.getReleaseYear() < 1900;
-        boolean isPublisherInvalid = album.getPublisher() != null && !album.getPublisher().isEmpty() && album.getPublisher().isBlank();
-        boolean isPriceInvalid = album.getPriceInPences() == null || album.getPriceInPences() < 1;
-        boolean isCurrencyInvalid = album.getCurrency() == null;
-        boolean isFormatInvalid = album.getFormat() == null;
+        boolean isTitleInvalid = newAlbumRequestBody.getNewAlbumTitle() == null || newAlbumRequestBody.getNewAlbumTitle().isBlank();
+        boolean areArtistsInvalid = newAlbumRequestBody.getNewAlbumArtistIds() == null || newAlbumRequestBody.getNewAlbumArtistIds().isEmpty();
+        boolean areGenresInvalid = newAlbumRequestBody.getNewAlbumGenreIds() == null || newAlbumRequestBody.getNewAlbumGenreIds().isEmpty();
+        boolean isDurationInvalid = newAlbumRequestBody.getNewAlbumDurationInSeconds() == null || newAlbumRequestBody.getNewAlbumDurationInSeconds() < 30;
+        boolean isImageUrlInvalid = newAlbumRequestBody.getNewAlbumImageUrl() != null && !newAlbumRequestBody.getNewAlbumImageUrl().isBlank() && !Pattern.matches(DataValidation.URL_REGEX, newAlbumRequestBody.getNewAlbumImageUrl());
+        boolean isReleaseYearInvalid = newAlbumRequestBody.getNewAlbumReleaseYear() != null && newAlbumRequestBody.getNewAlbumReleaseYear() < 1900;
+        boolean isPublisherInvalid = newAlbumRequestBody.getNewAlbumPublisher() != null && !newAlbumRequestBody.getNewAlbumPublisher().isEmpty() && newAlbumRequestBody.getNewAlbumPublisher().isBlank();
+        boolean isPriceInvalid = newAlbumRequestBody.getNewAlbumPriceInPences() == null || newAlbumRequestBody.getNewAlbumPriceInPences() < 1;
+        boolean isCurrencyInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
+        boolean isFormatInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
 
         boolean areFieldsInvalid = isTitleInvalid || areArtistsInvalid || areGenresInvalid || isDurationInvalid
                 || isImageUrlInvalid || isReleaseYearInvalid || isPublisherInvalid // nullables
@@ -47,24 +48,20 @@ public class AddNewAlbumClickHandler {
 
         Intent intent = new Intent(context, MainActivity.class);
 
-        Album newAlbum = new Album(
-                null, // id | TODO: Disable it while creating
-                album.getTitle(),
-                album.getArtists(),
-                album.getGenres(),
-                album.getDurationInSeconds(),
-                album.getImageUrl(),
-                album.getReleaseYear(),
-                album.getPublisher(),
-                album.getPriceInPences(),
-                album.getCurrency(),
-                null, // quantityInStock | TODO: Disable it while creating
-                album.getFormat(),
-                null, // createdDate | TODO: Disable it while creating
-                null // updatedDate | TODO: Disable it while creating
+        NewAlbumRequestBody validatedNewAlbum = new NewAlbumRequestBody(
+                newAlbumRequestBody.getNewAlbumTitle(),
+                newAlbumRequestBody.getNewAlbumArtistIds(),
+                newAlbumRequestBody.getNewAlbumGenreIds(),
+                newAlbumRequestBody.getNewAlbumDurationInSeconds(),
+                newAlbumRequestBody.getNewAlbumImageUrl(),
+                newAlbumRequestBody.getNewAlbumReleaseYear(),
+                newAlbumRequestBody.getNewAlbumPublisher(),
+                newAlbumRequestBody.getNewAlbumPriceInPences(),
+                newAlbumRequestBody.getNewAlbumCurrency(),
+                newAlbumRequestBody.getNewAlbumFormat()
         );
 
-        viewModel.addAlbum(newAlbum);
+        viewModel.addAlbum(validatedNewAlbum);
 
         context.startActivity(intent);
     }

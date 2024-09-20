@@ -12,6 +12,7 @@ import org.northcoders.recordshopapp.databinding.ActivityAddNewAlbumBinding;
 import org.northcoders.recordshopapp.model.album.Album;
 import org.northcoders.recordshopapp.model.album.FlattenedArtist;
 import org.northcoders.recordshopapp.model.album.FlattenedGenre;
+import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.model.enums.album.Currency;
 import org.northcoders.recordshopapp.model.enums.album.Format;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
@@ -21,42 +22,43 @@ import java.util.ArrayList;
 public class AddNewAlbumActivity extends AppCompatActivity {
     private ActivityAddNewAlbumBinding binding;
     private AddNewAlbumClickHandler clickHandler;
-    private Album album;
+    private NewAlbumRequestBody newAlbumFields;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_album);
 
-        album = new Album();
-        album.setTitle("");
-        // TODO: Fix Artists
-        album.setArtists(new ArrayList<FlattenedArtist>(){{
-            add(new FlattenedArtist(1L, "Elton John"));
+        newAlbumFields = new NewAlbumRequestBody();
+        newAlbumFields.setNewAlbumTitle("");
+        // TODO: Make it dynamic!
+        newAlbumFields.setNewAlbumArtistIds(new ArrayList<Long>(){{
+            add(1L);
         }});
-        // TODO: Fix Genres
-        album.setGenres(new ArrayList<FlattenedGenre>(){{
-            add(new FlattenedGenre(1L, "ROCK"));
+        // TODO: Make it dynamic!
+        newAlbumFields.setNewAlbumGenreIds(new ArrayList<Long>(){{
+            add(1L);
         }});
-        album.setDurationInSeconds(1);
-        album.setImageUrl("");
-        album.setReleaseYear(1968);
-        album.setPublisher("");
-        album.setPriceInPences(1);
-        album.setCurrency(Currency.GBP);
-//        album.setQuantityInStock(0);
-        album.setFormat(Format.Vinyl);
+        newAlbumFields.setNewAlbumDurationInSeconds(1);
+        newAlbumFields.setNewAlbumImageUrl("");
+        newAlbumFields.setNewAlbumReleaseYear(1968);
+        newAlbumFields.setNewAlbumPublisher("");
+        newAlbumFields.setNewAlbumPriceInPences(1);
+        // TODO: Make it dynamic!
+        newAlbumFields.setNewAlbumCurrency(Currency.GBP);
+        // TODO: Make it dynamic!
+        newAlbumFields.setNewAlbumFormat(Format.Vinyl);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
-        Log.d(AddNewAlbumActivity.class.getSimpleName(), "Album Initialised: " + album.getTitle());
+        Log.d(AddNewAlbumActivity.class.getSimpleName(), "Album Initialised: " + newAlbumFields.getNewAlbumTitle());
 
         MainActivityViewModel viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
 
-        clickHandler = new AddNewAlbumClickHandler(album, this, viewModel);
+        clickHandler = new AddNewAlbumClickHandler(newAlbumFields, this, viewModel);
 
-        binding.setAlbum(album);
+        binding.setAlbumInputs(newAlbumFields);
 
         binding.setClickHandler(clickHandler);
 

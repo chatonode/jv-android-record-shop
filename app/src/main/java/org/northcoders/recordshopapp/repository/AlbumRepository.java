@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.recordshopapp.model.album.Album;
 import org.northcoders.recordshopapp.model.api.getalbums.GetAlbumsResponse;
+import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumResponse;
 import org.northcoders.recordshopapp.model.enums.api.ResponseStatus;
 import org.northcoders.recordshopapp.service.AlbumApiService;
@@ -28,7 +29,7 @@ public class AlbumRepository {
         this.application = application;
     }
 
-    public MutableLiveData<List<Album>> getAllAlbumsData() {
+    public MutableLiveData<List<Album>> getAllAlbums() {
         AlbumApiService apiService = RetrofitInstance.getService();
         Call<GetAlbumsResponse> call = apiService.getAllAlbums();
 
@@ -76,9 +77,9 @@ public class AlbumRepository {
         return allAlbumsData;
     }
 
-    public void addNewAlbum(Album albumToAdd) {
+    public void postNewAlbum(NewAlbumRequestBody albumRequestBody) {
         AlbumApiService apiService = RetrofitInstance.getService();
-        Call<NewAlbumResponse> call = apiService.addNewAlbum(albumToAdd);
+        Call<NewAlbumResponse> call = apiService.postAlbum(albumRequestBody);
 
         call.enqueue(new Callback<NewAlbumResponse>() {
             @Override

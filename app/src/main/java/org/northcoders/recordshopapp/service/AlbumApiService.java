@@ -1,7 +1,7 @@
 package org.northcoders.recordshopapp.service;
 
-import org.northcoders.recordshopapp.model.album.Album;
 import org.northcoders.recordshopapp.model.api.getalbums.GetAlbumsResponse;
+import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.model.api.newalbum.NewAlbumResponse;
 
 import retrofit2.Call;
@@ -14,5 +14,5 @@ public interface AlbumApiService {
     Call<GetAlbumsResponse> getAllAlbums();
 
     @POST("api/v1/album")
-    Call<NewAlbumResponse> addNewAlbum(@Body Album album);
+    Call<NewAlbumResponse> postAlbum(@Body NewAlbumRequestBody albumRequestBody);
 }

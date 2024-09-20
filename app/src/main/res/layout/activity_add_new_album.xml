@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="album"
-            type="org.northcoders.recordshopapp.model.album.Album" />
+            name="albumInputs"
+            type="org.northcoders.recordshopapp.model.api.newalbum.NewAlbumRequestBody" />
 
         <variable
             name="clickHandler"
@@ -54,7 +54,7 @@
                     android:autofillHints="i.e. Goodbye Yellow Brick Road"
                     android:hint="Title"
                     android:inputType="text"
-                    android:text="@={album.title}"
+                    android:text="@={albumInputs.newAlbumTitle}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_title_icon"
                     app:layout_constraintTop_toTopOf="parent"
@@ -150,7 +150,7 @@
                     android:autofillHints="i.e. 4000"
                     android:hint="Duration in Seconds"
                     android:inputType="numberDecimal"
-                    android:text="@={`` + album.durationInSeconds}"
+                    android:text="@={`` + albumInputs.newAlbumDurationInSeconds}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_duration_in_seconds_icon"
                     app:layout_constraintTop_toTopOf="parent"
@@ -195,7 +195,7 @@
                     android:autofillHints="i.e. https://some-domain.com/Elton_John_-_Goodbye_Yellow_Brick_Road.jpg"
                     android:hint="Image URL"
                     android:inputType="textUri"
-                    android:text="@={album.imageUrl}"
+                    android:text="@={albumInputs.newAlbumImageUrl}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_image_url_icon"
                     app:layout_constraintTop_toTopOf="parent"
@@ -240,7 +240,7 @@
                     android:autofillHints="i.e. 1973"
                     android:hint="Release Year"
                     android:inputType="numberDecimal"
-                    android:text="@={`` + album.releaseYear}"
+                    android:text="@={`` + albumInputs.newAlbumReleaseYear}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_release_year_icon"
                     app:layout_constraintTop_toTopOf="parent"
@@ -285,7 +285,7 @@
                     android:autofillHints="i.e. DJM Records"
                     android:hint="Publisher"
                     android:inputType="text"
-                    android:text="@={album.publisher}"
+                    android:text="@={albumInputs.newAlbumPublisher}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_publisher_icon"
                     app:layout_constraintTop_toTopOf="parent"
@@ -330,7 +330,7 @@
                     android:autofillHints="i.e. DJM Records"
                     android:hint="Price in Pences"
                     android:inputType="numberDecimal"
-                    android:text="@={`` + album.priceInPences}"
+                    android:text="@={`` + albumInputs.newAlbumPriceInPences}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageView_album_field_price_in_pences_icon"
                     app:layout_constraintTop_toTopOf="parent"
