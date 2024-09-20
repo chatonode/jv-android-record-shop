@@ -28,10 +28,10 @@ public class AddNewAlbumClickHandler {
         boolean isTitleInvalid = album.getTitle() == null || album.getTitle().isBlank();
         boolean areArtistsInvalid = album.getArtists() == null || album.getArtists().isEmpty();
         boolean areGenresInvalid = album.getGenres() == null || album.getGenres().isEmpty();
-        boolean isDurationInvalid = album.getDurationInSeconds() == null || album.getDurationInSeconds() < 1;
-        boolean isImageUrlInvalid = album.getImageUrl() != null && Pattern.matches(DataValidation.URL_REGEX, album.getImageUrl());
+        boolean isDurationInvalid = album.getDurationInSeconds() == null || album.getDurationInSeconds() < 30;
+        boolean isImageUrlInvalid = album.getImageUrl() != null && !album.getImageUrl().isBlank() && !Pattern.matches(DataValidation.URL_REGEX, album.getImageUrl());
         boolean isReleaseYearInvalid = album.getReleaseYear() != null && album.getReleaseYear() < 1900;
-        boolean isPublisherInvalid = album.getPublisher() != null && album.getPublisher().isBlank();
+        boolean isPublisherInvalid = album.getPublisher() != null && !album.getPublisher().isEmpty() && album.getPublisher().isBlank();
         boolean isPriceInvalid = album.getPriceInPences() == null || album.getPriceInPences() < 1;
         boolean isCurrencyInvalid = album.getCurrency() == null;
         boolean isFormatInvalid = album.getFormat() == null;

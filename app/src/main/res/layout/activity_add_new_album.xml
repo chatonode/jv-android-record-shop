@@ -8,6 +8,7 @@
         <variable
             name="album"
             type="org.northcoders.recordshopapp.model.album.Album" />
+
         <variable
             name="clickHandler"
             type="org.northcoders.recordshopapp.ui.addalbum.AddNewAlbumClickHandler" />
@@ -362,8 +363,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:hint="Add Album"
-            android:text="Add Album"
             android:onClick="@{clickHandler::onSubmitButtonClicked}"
+            android:text="Add Album"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -376,8 +377,8 @@
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:background="#3f3e"
-            android:padding="5dp"
             android:onClick="@{clickHandler::onBackButtonClicked}"
+            android:padding="5dp"
             android:src="@drawable/return_fab_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -97,6 +97,9 @@ public class AlbumRepository {
                     return;
                 }
 
+                Log.d(AlbumRepository.class.getSimpleName(), "Album Created Response: " + response.body().getData());
+
+
                 Album createdAlbum = response.body().getData();
                 Toast.makeText(
                         application.getApplicationContext(),
