@@ -8,13 +8,16 @@ import com.google.gson.annotations.SerializedName;
 import org.northcoders.recordshopapp.BR;
 import org.northcoders.recordshopapp.dto.enums.ApiResponseStatus;
 
-public abstract class BaseResponse extends BaseObservable {
+public class BaseResponse extends BaseObservable {
     @SerializedName(value = "timestamp")
     private String timestamp;
     @SerializedName(value = "status")
     private ApiResponseStatus status;
     @SerializedName(value = "message")
     private String message;
+
+    public BaseResponse() {
+    }
 
     public BaseResponse(String timestamp, ApiResponseStatus status, String message) {
         this.timestamp = timestamp;

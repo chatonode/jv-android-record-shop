@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import org.northcoders.recordshopapp.BR;
 import org.northcoders.recordshopapp.dto.enums.ApiResponseStatus;
 
-public abstract class ErrorResponse<T> extends BaseResponse {
+public class ErrorResponse<T> extends BaseResponse {
     @SerializedName(value = "error")
     private T error;
 
