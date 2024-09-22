@@ -2,6 +2,7 @@ package org.northcoders.recordshopapp.ui.addalbum;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import org.northcoders.recordshopapp.util.DataValidation;
 import java.util.regex.Pattern;
 
 public class AddNewAlbumClickHandler {
+    private final static String TAG = AddNewAlbumClickHandler.class.getSimpleName();
 
     private NewAlbumRequestBody newAlbumRequestBody;
     private Context context;
@@ -31,10 +33,21 @@ public class AddNewAlbumClickHandler {
         boolean isDurationInvalid = newAlbumRequestBody.getNewAlbumDurationInSeconds() == null || newAlbumRequestBody.getNewAlbumDurationInSeconds() < 30;
         boolean isImageUrlInvalid = newAlbumRequestBody.getNewAlbumImageUrl() != null && !newAlbumRequestBody.getNewAlbumImageUrl().isBlank() && !Pattern.matches(DataValidation.URL_REGEX, newAlbumRequestBody.getNewAlbumImageUrl());
         boolean isReleaseYearInvalid = newAlbumRequestBody.getNewAlbumReleaseYear() != null && newAlbumRequestBody.getNewAlbumReleaseYear() < 1900;
-        boolean isPublisherInvalid = newAlbumRequestBody.getNewAlbumPublisher() != null && !newAlbumRequestBody.getNewAlbumPublisher().isEmpty() && newAlbumRequestBody.getNewAlbumPublisher().isBlank();
+        boolean isPublisherInvalid = newAlbumRequestBody.getNewAlbumPublisher() != null && !newAlbumRequestBody.getNewAlbumPublisher().isEmpty() && newAlbumRequestBody.getNewAlbumPublisher().trim().isEmpty();
         boolean isPriceInvalid = newAlbumRequestBody.getNewAlbumPriceInPences() == null || newAlbumRequestBody.getNewAlbumPriceInPences() < 1;
         boolean isCurrencyInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
         boolean isFormatInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
+
+//        Log.e(TAG, "isTitleInvalid: " + isTitleInvalid);
+//        Log.e(TAG, "areArtistsInvalid: " + areArtistsInvalid);
+//        Log.e(TAG, "areGenresInvalid: " + areGenresInvalid);
+//        Log.e(TAG, "isDurationInvalid: " + isDurationInvalid);
+//        Log.e(TAG, "isImageUrlInvalid: " + isImageUrlInvalid);
+//        Log.e(TAG, "isReleaseYearInvalid: " + isReleaseYearInvalid);
+//        Log.e(TAG, "isPublisherInvalid: " + isPublisherInvalid);
+//        Log.e(TAG, "isPriceInvalid: " + isPriceInvalid);
+//        Log.e(TAG, "isCurrencyInvalid: " + isCurrencyInvalid);
+//        Log.e(TAG, "isFormatInvalid: " + isFormatInvalid);
 
         boolean areFieldsInvalid = isTitleInvalid || areArtistsInvalid || areGenresInvalid || isDurationInvalid
                 || isImageUrlInvalid || isReleaseYearInvalid || isPublisherInvalid // nullables
