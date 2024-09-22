@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
@@ -32,7 +33,7 @@ public class AlbumRepository {
     private final Gson gson;
 
     private MutableLiveData<List<Album>> allAlbumsData = new MutableLiveData<>();
-    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
+//    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     public AlbumRepository(Application application) {
         this.application = application;
@@ -40,7 +41,7 @@ public class AlbumRepository {
     }
 
     public MutableLiveData<List<Album>> getAllAlbums() {
-        errorMessage.setValue("");
+//        errorMessage.setValue("");
 
         AlbumApiService apiService = RetrofitInstanceProvider.getService();
         Call<GetAlbumsResponse> call = apiService.getAllAlbums();
@@ -72,7 +73,7 @@ public class AlbumRepository {
     }
 
     public void postNewAlbum(NewAlbumRequestBody albumRequestBody) {
-        errorMessage.setValue("");
+//        errorMessage.setValue("");
 
         AlbumApiService apiService = RetrofitInstanceProvider.getService();
         Call<NewAlbumResponse> call = apiService.postAlbum(albumRequestBody);
@@ -111,6 +112,10 @@ public class AlbumRepository {
         });
     }
 
+//    public MutableLiveData<String> getErrorMessage() {
+//        return errorMessage;
+//    }
+
     private void handleFailure(Throwable t) {
         // TODO: Remove it and use errorMessage as live data in VM, Activity, and UI
         Toast.makeText(
@@ -119,7 +124,7 @@ public class AlbumRepository {
                 Toast.LENGTH_SHORT
         ).show();
 
-        errorMessage.setValue("Connection Failure");
+//        errorMessage.setValue("Connection Failure");
 
         Log.e(TAG, t.getMessage(), t);
     }
@@ -145,7 +150,7 @@ public class AlbumRepository {
                         Toast.LENGTH_SHORT
                 ).show();
 
-                errorMessage.setValue(modifiedErrorMessage);
+//                errorMessage.setValue(modifiedErrorMessage);
 
                 Log.e(TAG, modifiedErrorMessage);
 
@@ -164,7 +169,7 @@ public class AlbumRepository {
                     Toast.LENGTH_SHORT
             ).show();
 
-            errorMessage.setValue(singleErrorResponse.getMessage());
+//            errorMessage.setValue(singleErrorResponse.getMessage());
 
             Log.e(TAG, singleErrorResponse.getMessage());
         } catch (IOException e) {

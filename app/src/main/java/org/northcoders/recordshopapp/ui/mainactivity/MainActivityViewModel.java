@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.northcoders.recordshopapp.model.album.Album;
@@ -27,4 +28,8 @@ public class MainActivityViewModel extends AndroidViewModel {
     public void addAlbum(NewAlbumRequestBody album) {
         albumRepository.postNewAlbum(album);
     }
+
+//    public MutableLiveData<String> getErrorMessage() {
+//        return albumRepository.getErrorMessage();
+//    }
 }

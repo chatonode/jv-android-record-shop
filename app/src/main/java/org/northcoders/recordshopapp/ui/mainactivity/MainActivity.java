@@ -1,6 +1,7 @@
 package org.northcoders.recordshopapp.ui.mainactivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         binding.setClickHandler(clickHandler);
 
         getAllAlbums();
+//        observeErrorMessage();
     }
 
     private void getAllAlbums() {
@@ -64,4 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
         albumAdapter.notifyDataSetChanged();
     }
+
+//    private void observeErrorMessage() {
+//        viewModel.getErrorMessage().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String errorMessage) {
+//                Toast.makeText(
+//                        getApplicationContext(),
+//                        errorMessage,
+//                        Toast.LENGTH_SHORT
+//                ).show();
+//            }
+//        });
+//    }
 }
