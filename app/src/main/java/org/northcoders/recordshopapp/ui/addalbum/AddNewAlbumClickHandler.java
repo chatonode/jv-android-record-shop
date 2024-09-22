@@ -82,10 +82,10 @@ public class AddNewAlbumClickHandler {
                 || isImageUrlInvalid || isReleaseYearInvalid || isPublisherInvalid // nullables
                 || isPriceInvalid || isCurrencyInvalid || isFormatInvalid;
 
-//        if (areFieldsInvalid) {
-//            Toast.makeText(context, "Invalid field(s)", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        if (areFieldsInvalid) {
+            Toast.makeText(context, "Invalid field(s)", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Intent intent = new Intent(context, MainActivity.class);
 
