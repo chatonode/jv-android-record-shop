@@ -11,6 +11,7 @@ import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class AddNewAlbumClickHandler {
@@ -36,7 +37,7 @@ public class AddNewAlbumClickHandler {
         boolean isPublisherInvalid = newAlbumRequestBody.getNewAlbumPublisher() != null && !newAlbumRequestBody.getNewAlbumPublisher().isEmpty() && newAlbumRequestBody.getNewAlbumPublisher().trim().isEmpty();
         boolean isPriceInvalid = newAlbumRequestBody.getNewAlbumPriceInPences() == null || newAlbumRequestBody.getNewAlbumPriceInPences() < 1;
         boolean isCurrencyInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
-        boolean isFormatInvalid = newAlbumRequestBody.getNewAlbumCurrency() == null;
+        boolean isFormatInvalid = newAlbumRequestBody.getNewAlbumFormat() == null;
 
 //        Log.e(TAG, "isTitleInvalid: " + isTitleInvalid);
 //        Log.e(TAG, "areArtistsInvalid: " + areArtistsInvalid);
@@ -65,9 +66,13 @@ public class AddNewAlbumClickHandler {
                 newAlbumRequestBody.getNewAlbumArtistIds(),
                 newAlbumRequestBody.getNewAlbumGenreIds(),
                 newAlbumRequestBody.getNewAlbumDurationInSeconds(),
-                newAlbumRequestBody.getNewAlbumImageUrl(),
+                newAlbumRequestBody.getNewAlbumImageUrl().isEmpty()
+                        ? null
+                        : newAlbumRequestBody.getNewAlbumImageUrl(),
                 newAlbumRequestBody.getNewAlbumReleaseYear(),
-                newAlbumRequestBody.getNewAlbumPublisher(),
+                newAlbumRequestBody.getNewAlbumPublisher().isEmpty()
+                        ? null
+                        : newAlbumRequestBody.getNewAlbumPublisher(),
                 newAlbumRequestBody.getNewAlbumPriceInPences(),
                 newAlbumRequestBody.getNewAlbumCurrency(),
                 newAlbumRequestBody.getNewAlbumFormat()
