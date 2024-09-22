@@ -1,33 +1,31 @@
 package org.northcoders.recordshopapp.model.error;
 
-import androidx.databinding.Bindable;
-
 import com.google.gson.annotations.SerializedName;
 
 public class ValidationErrorSummary {
-    @SerializedName(value = "defaultMessage")
-    private String message;
-    @SerializedName(value = "privateObjectName")
-    private String objectName;
+    @SerializedName(value = "field")
+    private String field;
+    @SerializedName(value = "reason")
+    private String reason;
 
-    public ValidationErrorSummary(String message, String objectName) {
-        this.message = message;
-        this.objectName = objectName;
+    public ValidationErrorSummary(String field, String reason) {
+        this.field = field;
+        this.reason = reason;
     }
 
-    public String getMessage() {
-        return message;
+    public String getField() {
+        return field;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setField(String field) {
+        this.field = field;
     }
 
-    public String getObjectName() {
-        return objectName;
+    public String getReason() {
+        return reason;
     }
 
-    public void setObjectName(String objectName) {
-        this.objectName = objectName;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }
