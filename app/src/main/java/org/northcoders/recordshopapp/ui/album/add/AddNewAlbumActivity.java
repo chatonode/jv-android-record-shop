@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.ui.addalbum;
+package org.northcoders.recordshopapp.ui.album.add;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +48,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
-        Log.d(AddNewAlbumActivity.class.getSimpleName(), "Album Initialised: " + newAlbumFields.getNewAlbumTitle());
+        Log.d(AddNewAlbumActivity.class.getSimpleName(), "Album Initialised");
 
         MainActivityViewModel viewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);

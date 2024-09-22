@@ -11,14 +11,14 @@
 
         <variable
             name="clickHandler"
-            type="org.northcoders.recordshopapp.ui.addalbum.AddNewAlbumClickHandler" />
+            type="org.northcoders.recordshopapp.ui.album.add.AddNewAlbumClickHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.addalbum.AddNewAlbumActivity">
+        tools:context=".ui.album.add.AddNewAlbumActivity">
 
         <!--    Title: Text Input    -->
         <androidx.cardview.widget.CardView

@@ -35,8 +35,8 @@ public class ErrorResponseHandler {
     }
 
     public void handleErrorResponse(Response<?> response) {
-        try (ResponseBody responseBody = response.errorBody()) {
-            if (response.code() == 400) {
+        if (response.code() == 400) {
+            try (ResponseBody responseBody = response.errorBody()) {
 
                 String errorsBody = responseBody.string();
 
@@ -60,10 +60,14 @@ public class ErrorResponseHandler {
                 Log.e(TAG, modifiedErrorMessage);
 
                 return;
+            } catch (IOException e) {
+                Log.e(TAG, "Error parsing error response: " + e.getMessage(), e);
             }
+        }
 
-            // Else
+        // Else
 
+        try (ResponseBody responseBody = response.errorBody()) {
             String errorBody = responseBody.string();
             SingleErrorResponse singleErrorResponse = gson.fromJson(errorBody, SingleErrorResponse.class);
 
