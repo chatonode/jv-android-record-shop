@@ -14,191 +14,191 @@ import java.util.List;
 public class Album extends BaseObservable {
 
     @SerializedName(value = "id")
-    private Long id;
+    private Long albumId;
     @SerializedName(value = "title")
-    private String title;
+    private String albumTitle;
     @SerializedName(value = "artists")
-    private List<ArtistSummary> artists;
+    private List<ArtistSummary> albumArtists;
     @SerializedName(value = "genres")
-    private List<GenreSummary> genres;
+    private List<GenreSummary> albumGenres;
     @SerializedName(value = "durationInSeconds")
-    private Integer durationInSeconds;
+    private Integer albumDurationInSeconds;
     @SerializedName(value = "imageUrl")
-    private String imageUrl; // nullable
+    private String albumImageUrl; // nullable
     @SerializedName(value = "releaseYear")
-    private Integer releaseYear; // nullable
+    private Integer albumReleaseYear; // nullable
     @SerializedName(value = "publisher")
-    private String publisher; // nullable
+    private String albumPublisher; // nullable
     @SerializedName(value = "priceInPences")
-    private Integer priceInPences;
+    private Integer albumPriceInPences;
     @SerializedName(value = "currency")
-    private Currency currency;
+    private Currency albumCurrency;
     @SerializedName(value = "quantityInStock")
-    private Integer quantityInStock;
+    private Integer albumQuantityInStock;
     @SerializedName(value = "format")
-    private Format format;
+    private Format albumFormat;
     @SerializedName(value = "createdDate")
-    private String createdDate;
+    private String albumCreatedDate;
     @SerializedName(value = "updatedDate")
-    private String updatedDate;
+    private String albumUpdatedDate;
 
     public Album() {
     }
 
-    public Album(Long id, String title, List<ArtistSummary> artists, List<GenreSummary> genres, Integer durationInSeconds, String imageUrl, Integer releaseYear, String publisher, Integer priceInPences, Currency currency, Integer quantityInStock, Format format, String createdDate, String updatedDate) {
-        this.id = id;
-        this.title = title;
-        this.artists = artists;
-        this.genres = genres;
-        this.durationInSeconds = durationInSeconds;
-        this.imageUrl = imageUrl;
-        this.releaseYear = releaseYear;
-        this.publisher = publisher;
-        this.priceInPences = priceInPences;
-        this.currency = currency;
-        this.quantityInStock = quantityInStock;
-        this.format = format;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
+    public Album(Long albumId, String albumTitle, List<ArtistSummary> albumArtists, List<GenreSummary> albumGenres, Integer albumDurationInSeconds, String albumImageUrl, Integer albumReleaseYear, String albumPublisher, Integer albumPriceInPences, Currency albumCurrency, Integer albumQuantityInStock, Format albumFormat, String albumCreatedDate, String albumUpdatedDate) {
+        this.albumId = albumId;
+        this.albumTitle = albumTitle;
+        this.albumArtists = albumArtists;
+        this.albumGenres = albumGenres;
+        this.albumDurationInSeconds = albumDurationInSeconds;
+        this.albumImageUrl = albumImageUrl;
+        this.albumReleaseYear = albumReleaseYear;
+        this.albumPublisher = albumPublisher;
+        this.albumPriceInPences = albumPriceInPences;
+        this.albumCurrency = albumCurrency;
+        this.albumQuantityInStock = albumQuantityInStock;
+        this.albumFormat = albumFormat;
+        this.albumCreatedDate = albumCreatedDate;
+        this.albumUpdatedDate = albumUpdatedDate;
     }
 
     @Bindable
-    public Long getId() {
-        return id;
+    public Long getAlbumId() {
+        return albumId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-        notifyPropertyChanged(BR.id);
-    }
-
-    @Bindable
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-        notifyPropertyChanged(BR.title);
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
+        notifyPropertyChanged(BR.albumId);
     }
 
     @Bindable
-    public List<ArtistSummary> getArtists() {
-        return artists;
+    public String getAlbumTitle() {
+        return albumTitle;
     }
 
-    public void setArtists(List<ArtistSummary> artists) {
-        this.artists = artists;
-        notifyPropertyChanged(BR.artists);
-    }
-
-    @Bindable
-    public List<GenreSummary> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<GenreSummary> genres) {
-        this.genres = genres;
-        notifyPropertyChanged(BR.genres);
+    public void setAlbumTitle(String albumTitle) {
+        this.albumTitle = albumTitle;
+        notifyPropertyChanged(BR.albumTitle);
     }
 
     @Bindable
-    public Integer getDurationInSeconds() {
-        return durationInSeconds;
+    public List<ArtistSummary> getAlbumArtists() {
+        return albumArtists;
     }
 
-    public void setDurationInSeconds(Integer durationInSeconds) {
-        this.durationInSeconds = durationInSeconds;
-        notifyPropertyChanged(BR.durationInSeconds);
-    }
-
-    @Bindable
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        notifyPropertyChanged(BR.imageUrl);
+    public void setAlbumArtists(List<ArtistSummary> albumArtists) {
+        this.albumArtists = albumArtists;
+        notifyPropertyChanged(BR.albumArtists);
     }
 
     @Bindable
-    public Integer getReleaseYear() {
-        return releaseYear;
+    public List<GenreSummary> getAlbumGenres() {
+        return albumGenres;
     }
 
-    public void setReleaseYear(Integer releaseYear) {
-        this.releaseYear = releaseYear;
-        notifyPropertyChanged(BR.releaseYear);
-    }
-
-    @Bindable
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-        notifyPropertyChanged(BR.publisher);
+    public void setAlbumGenres(List<GenreSummary> albumGenres) {
+        this.albumGenres = albumGenres;
+        notifyPropertyChanged(BR.albumGenres);
     }
 
     @Bindable
-    public Integer getPriceInPences() {
-        return priceInPences;
+    public Integer getAlbumDurationInSeconds() {
+        return albumDurationInSeconds;
     }
 
-    public void setPriceInPences(Integer priceInPences) {
-        this.priceInPences = priceInPences;
-        notifyPropertyChanged(BR.priceInPences);
-    }
-
-    @Bindable
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-        notifyPropertyChanged(BR.currency);
+    public void setAlbumDurationInSeconds(Integer albumDurationInSeconds) {
+        this.albumDurationInSeconds = albumDurationInSeconds;
+        notifyPropertyChanged(BR.albumDurationInSeconds);
     }
 
     @Bindable
-    public Integer getQuantityInStock() {
-        return quantityInStock;
+    public String getAlbumImageUrl() {
+        return albumImageUrl;
     }
 
-    public void setQuantityInStock(Integer quantityInStock) {
-        this.quantityInStock = quantityInStock;
-        notifyPropertyChanged(BR.quantityInStock);
-    }
-
-    @Bindable
-    public Format getFormat() {
-        return format;
-    }
-
-    public void setFormat(Format format) {
-        this.format = format;
-        notifyPropertyChanged(BR.format);
+    public void setAlbumImageUrl(String albumImageUrl) {
+        this.albumImageUrl = albumImageUrl;
+        notifyPropertyChanged(BR.albumImageUrl);
     }
 
     @Bindable
-    public String getCreatedDate() {
-        return createdDate;
+    public Integer getAlbumReleaseYear() {
+        return albumReleaseYear;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-        notifyPropertyChanged(BR.createdDate);
+    public void setAlbumReleaseYear(Integer albumReleaseYear) {
+        this.albumReleaseYear = albumReleaseYear;
+        notifyPropertyChanged(BR.albumReleaseYear);
     }
 
     @Bindable
-    public String getUpdatedDate() {
-        return updatedDate;
+    public String getAlbumPublisher() {
+        return albumPublisher;
     }
 
-    public void setUpdatedDate(String updatedDate) {
-        this.updatedDate = updatedDate;
-        notifyPropertyChanged(BR.updatedDate);
+    public void setAlbumPublisher(String albumPublisher) {
+        this.albumPublisher = albumPublisher;
+        notifyPropertyChanged(BR.albumPublisher);
+    }
+
+    @Bindable
+    public Integer getAlbumPriceInPences() {
+        return albumPriceInPences;
+    }
+
+    public void setAlbumPriceInPences(Integer albumPriceInPences) {
+        this.albumPriceInPences = albumPriceInPences;
+        notifyPropertyChanged(BR.albumPriceInPences);
+    }
+
+    @Bindable
+    public Currency getAlbumCurrency() {
+        return albumCurrency;
+    }
+
+    public void setAlbumCurrency(Currency albumCurrency) {
+        this.albumCurrency = albumCurrency;
+        notifyPropertyChanged(BR.albumCurrency);
+    }
+
+    @Bindable
+    public Integer getAlbumQuantityInStock() {
+        return albumQuantityInStock;
+    }
+
+    public void setAlbumQuantityInStock(Integer albumQuantityInStock) {
+        this.albumQuantityInStock = albumQuantityInStock;
+        notifyPropertyChanged(BR.albumQuantityInStock);
+    }
+
+    @Bindable
+    public Format getAlbumFormat() {
+        return albumFormat;
+    }
+
+    public void setAlbumFormat(Format albumFormat) {
+        this.albumFormat = albumFormat;
+        notifyPropertyChanged(BR.albumFormat);
+    }
+
+    @Bindable
+    public String getAlbumCreatedDate() {
+        return albumCreatedDate;
+    }
+
+    public void setAlbumCreatedDate(String albumCreatedDate) {
+        this.albumCreatedDate = albumCreatedDate;
+        notifyPropertyChanged(BR.albumCreatedDate);
+    }
+
+    @Bindable
+    public String getAlbumUpdatedDate() {
+        return albumUpdatedDate;
+    }
+
+    public void setAlbumUpdatedDate(String albumUpdatedDate) {
+        this.albumUpdatedDate = albumUpdatedDate;
+        notifyPropertyChanged(BR.albumUpdatedDate);
     }
 }

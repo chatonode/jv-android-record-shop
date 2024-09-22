@@ -4,26 +4,18 @@ import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.gson.Gson;
-
-import org.northcoders.recordshopapp.dto.error.SingleErrorResponse;
-import org.northcoders.recordshopapp.dto.error.ValidationErrorsResponse;
 import org.northcoders.recordshopapp.model.album.Album;
 import org.northcoders.recordshopapp.dto.album.get.all.GetAlbumsResponse;
 import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.dto.album.post.NewAlbumResponse;
-import org.northcoders.recordshopapp.dto.enums.ApiResponseStatus;
 import org.northcoders.recordshopapp.service.AlbumApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstanceProvider;
 import org.northcoders.recordshopapp.util.ErrorResponseHandler;
 
-import java.io.IOException;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -93,7 +85,7 @@ public class AlbumRepository {
                 String modifiedSuccessMessage = String.format(
                         "%s -> %s",
                         response.body().getMessage(),
-                        createdAlbum.getTitle()
+                        createdAlbum.getAlbumTitle()
                 );
 
                 // TODO: Remove it and use albumsData as live data in VM, Activity, and UI
