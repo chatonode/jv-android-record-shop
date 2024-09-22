@@ -6,11 +6,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
+import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -26,6 +31,29 @@ public class AddNewAlbumClickHandler {
         this.context = context;
         this.viewModel = viewModel;
     }
+
+//    public void populateArtistChips(List<String> artistNames) {
+//        ChipGroup chipGroup = findViewById(R.id.chipGroup_album_field_artists);
+//        chipGroup.animate();
+//        chipGroup.removeAllViews(); // Clear existing chips
+//
+//        for (String artistName : artistNames) {
+//            Chip chip = new Chip(context);
+//            chip.setText(artistName);
+//            chip.setCheckable(true);
+//
+//            // Set click listener to handle chip selection
+//            chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//                if (isChecked) {
+//                    newAlbumRequestBody.getNewAlbumArtistIds().add(/* get artist ID */);
+//                } else {
+//                    newAlbumRequestBody.getNewAlbumArtistIds().remove(/* get artist ID */);
+//                }
+//            });
+//
+//            chipGroup.addView(chip);
+//        }
+//    }
 
     public void onSubmitButtonClicked(View view) {
         boolean isTitleInvalid = newAlbumRequestBody.getNewAlbumTitle() == null || newAlbumRequestBody.getNewAlbumTitle().isBlank();

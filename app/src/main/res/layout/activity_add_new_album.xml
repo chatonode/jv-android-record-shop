@@ -94,24 +94,97 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
 
-                <LinearLayout
-                    android:id="@+id/artistsCheckboxContainer"
-                    android:layout_width="match_parent"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup_album_field_artists"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleLine="false"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageView_album_field_artists_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:checkedChip="@id/text_elton"
+                >
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/text_elton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="Elton John"
+                    />
 
-                    <CheckedTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
 
-                    <CheckedTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bob Dylan"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rihanna"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Erkin Koray"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="asdsa"
+                    />
+
+
+            </com.google.android.material.chip.ChipGroup>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+
 
         <!--    Genres: Checkbox    -->
         <!--   TODO: Apply same solution with artists     -->
