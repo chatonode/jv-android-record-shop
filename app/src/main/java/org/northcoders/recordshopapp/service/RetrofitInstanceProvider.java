@@ -11,8 +11,8 @@ public class RetrofitInstanceProvider {
 //    private static final String BASE_URL = "https://127.0.0.1:8080/";
     private static final String BASE_URL = "http://record-shop-api-env.eba-nahrmp8h.eu-west-2.elasticbeanstalk.com/";
 
-    public static AlbumApiService getService() {
 
+    private static Retrofit getRetrofitInstance() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
@@ -27,6 +27,9 @@ public class RetrofitInstanceProvider {
                     .build();
         }
 
-        return retrofit.create(AlbumApiService.class);
+        return retrofit;
+    }
+    public static <T> T getService(Class<T> apiServiceClass) {
+        return getRetrofitInstance().create(apiServiceClass);
     }
 }
