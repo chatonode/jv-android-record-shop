@@ -26,6 +26,7 @@ public class AlbumRepository {
     private ErrorResponseHandler errorResponseHandler;
 
     private MutableLiveData<List<Album>> allAlbumsData = new MutableLiveData<>();
+    private MutableLiveData<List<Album>> filteredAlbumsData = new MutableLiveData<>();
 //    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     public AlbumRepository(Application application) {
@@ -63,6 +64,36 @@ public class AlbumRepository {
         });
 
         return allAlbumsData;
+    }
+
+    public MutableLiveData<List<Album>> getFilteredAlbums(String titleQuery, Integer yearQuery) {
+        AlbumApiService apiService = RetrofitInstanceProvider.getService(AlbumApiService.class);
+        Call<GetAlbumsResponse> call = apiService.getFilteredAlbums(titleQuery, yearQuery);
+
+        call.enqueue(new Callback<GetAlbumsResponse>() {
+            @Override
+            public void onResponse(Call<GetAlbumsResponse> call, Response<GetAlbumsResponse> response) {
+                boolean isErrorResponse = !response.isSuccessful() && response.body() == null;
+
+                if (isErrorResponse) {
+                    errorResponseHandler.handleErrorResponse(response);
+
+                    return;
+                }
+
+                List<Album> filteredAlbums = response.body().getData();
+                filteredAlbumsData.setValue(filteredAlbums);
+
+                Log.d(TAG, String.format("Filter %s (%d)", response.body().getMessage(), filteredAlbums.size()));
+            }
+
+            @Override
+            public void onFailure(Call<GetAlbumsResponse> call, Throwable t) {
+                errorResponseHandler.handleFailure(t);
+            }
+        });
+
+        return filteredAlbumsData;
     }
 
     public void postNewAlbum(NewAlbumRequestBody albumRequestBody) {
