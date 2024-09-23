@@ -7,7 +7,7 @@
 
         <variable
             name="clickHandler"
-            type="org.northcoders.recordshopapp.ui.mainactivity.MainActivityClickHandler" />
+            type="org.northcoders.recordshopapp.ui.album.AlbumActivityClickHandler" />
     </data>
 
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F6FADD"
-        tools:context=".ui.mainactivity.MainActivity">
+        tools:context=".ui.album.AlbumActivity">
 
         <ImageView
             android:id="@+id/imageView_banner_image"

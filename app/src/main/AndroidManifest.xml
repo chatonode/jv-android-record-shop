@@ -19,7 +19,7 @@
             android:name=".ui.album.add.AddNewAlbumActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.mainactivity.MainActivity"
+            android:name=".ui.album.AlbumActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
