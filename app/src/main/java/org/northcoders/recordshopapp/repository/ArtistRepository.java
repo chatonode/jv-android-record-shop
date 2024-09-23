@@ -6,11 +6,11 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import org.northcoders.recordshopapp.model.album.Album;
-import org.northcoders.recordshopapp.dto.album.get.all.GetAlbumsResponse;
-import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
-import org.northcoders.recordshopapp.dto.album.post.NewAlbumResponse;
-import org.northcoders.recordshopapp.service.AlbumApiService;
+import org.northcoders.recordshopapp.dto.artist.get.all.GetArtistsResponse;
+import org.northcoders.recordshopapp.dto.artist.post.NewArtistRequestBody;
+import org.northcoders.recordshopapp.dto.artist.post.NewArtistResponse;
+import org.northcoders.recordshopapp.model.artist.Artist;
+import org.northcoders.recordshopapp.service.ArtistApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstanceProvider;
 import org.northcoders.recordshopapp.util.ErrorResponseHandler;
 
@@ -20,28 +20,28 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AlbumRepository {
-    private static final String TAG = AlbumRepository.class.getSimpleName();
+public class ArtistRepository {
+    private static final String TAG = ArtistRepository.class.getSimpleName();
     private Application application;
     private ErrorResponseHandler errorResponseHandler;
 
-    private MutableLiveData<List<Album>> allAlbumsData = new MutableLiveData<>();
+    private MutableLiveData<List<Artist>> allArtistData = new MutableLiveData<>();
 //    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
-    public AlbumRepository(Application application) {
+    public ArtistRepository(Application application) {
         this.application = application;
         this.errorResponseHandler = new ErrorResponseHandler();
     }
 
-    public MutableLiveData<List<Album>> getAllAlbums() {
+    public MutableLiveData<List<Artist>> getAllArtists() {
 //        errorMessage.setValue("");
 
-        AlbumApiService apiService = RetrofitInstanceProvider.getService(AlbumApiService.class);
-        Call<GetAlbumsResponse> call = apiService.getAllAlbums();
+        ArtistApiService apiService = RetrofitInstanceProvider.getService(ArtistApiService.class);
+        Call<GetArtistsResponse> call = apiService.getAllArtists();
 
-        call.enqueue(new Callback<GetAlbumsResponse>() {
+        call.enqueue(new Callback<GetArtistsResponse>() {
             @Override
-            public void onResponse(Call<GetAlbumsResponse> call, Response<GetAlbumsResponse> response) {
+            public void onResponse(Call<GetArtistsResponse> call, Response<GetArtistsResponse> response) {
                 boolean isErrorResponse = !response.isSuccessful() && response.body() == null;
 
                 if (isErrorResponse) {
@@ -50,30 +50,30 @@ public class AlbumRepository {
                     return;
                 }
 
-                List<Album> albums = response.body().getData();
-                allAlbumsData.setValue(albums);
+                List<Artist> artists = response.body().getData();
+                allArtistData.setValue(artists);
 
-                Log.d(TAG, String.format("%s (%d)", response.body().getMessage(), albums.size()));
+                Log.d(TAG, String.format("%s (%d)", response.body().getMessage(), artists.size()));
             }
 
             @Override
-            public void onFailure(Call<GetAlbumsResponse> call, Throwable t) {
+            public void onFailure(Call<GetArtistsResponse> call, Throwable t) {
                 errorResponseHandler.handleFailure(t);
             }
         });
 
-        return allAlbumsData;
+        return allArtistData;
     }
 
-    public void postNewAlbum(NewAlbumRequestBody albumRequestBody) {
+    public void postNewArtist(NewArtistRequestBody artistRequestBody) {
 //        errorMessage.setValue("");
 
-        AlbumApiService apiService = RetrofitInstanceProvider.getService(AlbumApiService.class);
-        Call<NewAlbumResponse> call = apiService.postAlbum(albumRequestBody);
+        ArtistApiService apiService = RetrofitInstanceProvider.getService(ArtistApiService.class);
+        Call<NewArtistResponse> call = apiService.postArtist(artistRequestBody);
 
-        call.enqueue(new Callback<NewAlbumResponse>() {
+        call.enqueue(new Callback<NewArtistResponse>() {
             @Override
-            public void onResponse(Call<NewAlbumResponse> call, Response<NewAlbumResponse> response) {
+            public void onResponse(Call<NewArtistResponse> call, Response<NewArtistResponse> response) {
                 boolean isErrorResponse = !response.isSuccessful() && response.body() == null;
 
                 if (isErrorResponse) {
@@ -81,14 +81,14 @@ public class AlbumRepository {
                     return;
                 }
 
-                Album createdAlbum = response.body().getData();
+                Artist createdArtist = response.body().getData();
                 String modifiedSuccessMessage = String.format(
                         "%s -> %s",
                         response.body().getMessage(),
-                        createdAlbum.getAlbumTitle()
+                        createdArtist.getArtistFullName()
                 );
 
-                // TODO: Remove it and use albumsData as live data in VM, Activity, and UI
+                // TODO: Remove it and use artistsData as live data in VM, Activity, and UI
                 Toast.makeText(
                         application.getApplicationContext(),
                         modifiedSuccessMessage,
@@ -99,7 +99,7 @@ public class AlbumRepository {
             }
 
             @Override
-            public void onFailure(Call<NewAlbumResponse> call, Throwable t) {
+            public void onFailure(Call<NewArtistResponse> call, Throwable t) {
                 errorResponseHandler.handleFailure(t);
             }
         });

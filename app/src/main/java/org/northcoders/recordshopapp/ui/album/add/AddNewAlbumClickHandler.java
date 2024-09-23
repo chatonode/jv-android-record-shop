@@ -1,8 +1,7 @@
-package org.northcoders.recordshopapp.ui.addalbum;
+package org.northcoders.recordshopapp.ui.album.add;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,7 +10,6 @@ import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
 import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;
 
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class AddNewAlbumClickHandler {
