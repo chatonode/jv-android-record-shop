@@ -1,6 +1,7 @@
 package org.northcoders.recordshopapp.ui.mainactivity;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -15,8 +16,10 @@ import org.northcoders.recordshopapp.model.album.Album;
 import java.util.List;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemViewHolder> {
+    private final static String TAG = AlbumAdapter.class.getSimpleName();
     private Context context;
     private List<Album> albumItems;
+    private List<Album> filteredAlbumItems;
 
     public AlbumAdapter(Context context, List<Album> albumItems) {
         this.context = context;
@@ -38,7 +41,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
 
     @Override
     public void onBindViewHolder(@NonNull AlbumItemViewHolder holder, int position) {
-        Album albumItem = albumItems.get(position);
 
 //        ImageView imageView = (ImageView) findViewById(R.id.imageView_album_image);
 //        Glide.with(holder.albumImageUrl).load(albumItem.getImageUrl()).into(imageView);
@@ -51,6 +53,16 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
 //                : "00" + String.valueOf(albumItem.getId()));
 //        holder.albumTitle.setText(albumItem.getTitle());
 
+        Log.d(TAG, "albumItems.size(): " + albumItems.size());
+
+        if (filteredAlbumItems != null && !filteredAlbumItems.isEmpty()) {
+            Album filteredAlbumItem = filteredAlbumItems.get(position);
+            Log.d(TAG, "filteredAlbumItems.size(): " + filteredAlbumItems.size());
+            holder.albumItemLayoutBinding.setAlbum(filteredAlbumItem);
+        }
+
+        Album albumItem = albumItems.get(position);
+
         holder.albumItemLayoutBinding.setAlbum(albumItem);
     }
 
@@ -59,20 +71,18 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
         return albumItems.size();
     }
 
+    public void setFilteredList(List<Album> filteredAlbumList) {
+        this.albumItems = filteredAlbumList;
+        notifyDataSetChanged();
+    }
+
 
     public static class AlbumItemViewHolder extends RecyclerView.ViewHolder {
-        //        ImageView albumImageUrl;
-//        TextView albumId;
-//        TextView albumTitle;
         AlbumItemLayoutBinding albumItemLayoutBinding;
 
         public AlbumItemViewHolder(@NonNull AlbumItemLayoutBinding albumItemLayoutBinding) {
             super(albumItemLayoutBinding.getRoot());
             this.albumItemLayoutBinding = albumItemLayoutBinding;
-
-//            albumImageUrl = itemView.findViewById(R.id.imageView_album_image);
-//            albumId = itemView.findViewById(R.id.textView_album_item_id);
-//            albumTitle = itemView.findViewById(R.id.textView_album_item_title);
         }
     }
 }

@@ -66,9 +66,9 @@ public class AlbumRepository {
         return allAlbumsData;
     }
 
-    public MutableLiveData<List<Album>> getFilteredAlbums(String titleQuery, Integer yearQuery) {
+    public MutableLiveData<List<Album>> getFilteredAlbums(String query) {
         AlbumApiService apiService = RetrofitInstanceProvider.getService(AlbumApiService.class);
-        Call<GetAlbumsResponse> call = apiService.getFilteredAlbums(titleQuery, yearQuery);
+        Call<GetAlbumsResponse> call = apiService.getFilteredAlbums(query.toLowerCase());
 
         call.enqueue(new Callback<GetAlbumsResponse>() {
             @Override

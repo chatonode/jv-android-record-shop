@@ -16,8 +16,8 @@ public interface AlbumApiService {
 
     @GET("api/v1/album")
     Call<GetAlbumsResponse> getFilteredAlbums(
-            @Query("title") String title,
-            @Query("year") Integer year
+            @Query("title") String title
+//            @Query("year") Integer year
 //            @Query("genre") String genre,
 //            @Query("format") String format
     );
