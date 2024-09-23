@@ -25,29 +25,6 @@ public class AddNewAlbumClickHandler {
         this.viewModel = viewModel;
     }
 
-//    public void populateArtistChips(List<String> artistNames) {
-//        ChipGroup chipGroup = findViewById(R.id.chipGroup_album_field_artists);
-//        chipGroup.animate();
-//        chipGroup.removeAllViews(); // Clear existing chips
-//
-//        for (String artistName : artistNames) {
-//            Chip chip = new Chip(context);
-//            chip.setText(artistName);
-//            chip.setCheckable(true);
-//
-//            // Set click listener to handle chip selection
-//            chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                if (isChecked) {
-//                    newAlbumRequestBody.getNewAlbumArtistIds().add(/* get artist ID */);
-//                } else {
-//                    newAlbumRequestBody.getNewAlbumArtistIds().remove(/* get artist ID */);
-//                }
-//            });
-//
-//            chipGroup.addView(chip);
-//        }
-//    }
-
     public void onSubmitButtonClicked(View view) {
         boolean isTitleInvalid = newAlbumRequestBody.getNewAlbumTitle() == null || newAlbumRequestBody.getNewAlbumTitle().isBlank();
         boolean areArtistsInvalid = newAlbumRequestBody.getNewAlbumArtistIds() == null || newAlbumRequestBody.getNewAlbumArtistIds().isEmpty();
