@@ -16,7 +16,6 @@ import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.ActivityMainBinding;
 import org.northcoders.recordshopapp.model.album.Album;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private MainActivityViewModel viewModel;
     private MainActivityClickHandler clickHandler;
+    private SearchView searchView;
 
     private RecyclerView recyclerView;
-//    private SearchView searchView;
+    private Observer<List<Album>> allAlbumsObserver;
+    private Observer<List<Album>> filteredAlbumsObserver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +51,12 @@ public class MainActivity extends AppCompatActivity {
         clickHandler = new MainActivityClickHandler(this);
         binding.setClickHandler(clickHandler);
 
-        observeAllAlbums();
-
-//        observeErrorMessage();
-
-//        searchView = findViewById(R.id.searchView_album_filter);
-//        searchView.clearFocus();
-        setSearchViewListeners();
+        loadAllAlbums();
+        searchView = findViewById(R.id.searchView_album_filter);
+        setupSearchView();
     }
 
-    private void setSearchViewListeners() {
-        SearchView searchView = binding.searchViewAlbumFilter;
+    private void setupSearchView() {
         searchView.clearFocus();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -75,10 +71,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (!newText.isBlank()) {
-                    observeFilteredAlbums(newText.toLowerCase());
+                    loadFilteredAlbums(newText.toLowerCase());
                 } else {
                     // If search is cleared, show all albums
-                    albumAdapter.setFilteredList(albumList);
+                    Log.d(TAG, "Loaded all albums from search view onChange");
+                    loadAllAlbums();
                 }
 
                 return true;
@@ -87,15 +84,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void observeAllAlbums() {
-        viewModel.getAllAlbums().observe(this, new Observer<List<Album>>() {
-            @Override
-            public void onChanged(List<Album> albumsFromLiveData) {
-                albumList = albumsFromLiveData;
+    private void loadAllAlbums() {
+        if (allAlbumsObserver == null) {
+            allAlbumsObserver = new Observer<List<Album>>() {
+                @Override
+                public void onChanged(List<Album> albumsFromLiveData) {
+                    albumList = albumsFromLiveData;
 
-                displayAlbumsInRecyclerView();
-            }
-        });
+                    Log.d(TAG, "all result size: " + albumsFromLiveData.size());
+
+                    displayAlbumsInRecyclerView();
+                }
+            };
+        }
+
+        viewModel.getAllAlbums().observe(this, allAlbumsObserver);
     }
 
     private void displayAlbumsInRecyclerView() {
@@ -108,35 +111,25 @@ public class MainActivity extends AppCompatActivity {
         albumAdapter.notifyDataSetChanged();
     }
 
-    private void observeFilteredAlbums(String query) {
-        viewModel.getFilteredAlbums(query).observe(this, new Observer<List<Album>>() {
-            @Override
-            public void onChanged(List<Album> filteredAlbumsFromLiveData) {
-                Log.d(TAG, query + " result size: " + filteredAlbumsFromLiveData.size());
+    private void loadFilteredAlbums(String query) {
+        if (filteredAlbumsObserver == null) {
+            // For not creating an observer all the time and re-using it
+            filteredAlbumsObserver = new Observer<List<Album>>() {
+                @Override
+                public void onChanged(List<Album> filteredAlbumsFromLiveData) {
+                    Log.d(TAG, "search result size: " + filteredAlbumsFromLiveData.size());
 
-                // Check if results are empty and update the adapter
-                if (filteredAlbumsFromLiveData.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "No albums found.", Toast.LENGTH_SHORT).show();
+                    if (filteredAlbumsFromLiveData.isEmpty()) {
+                        Toast.makeText(MainActivity.this, "No albums found.", Toast.LENGTH_SHORT).show();
+                    }
+                    albumAdapter.setFilteredList(filteredAlbumsFromLiveData);
+
+                    albumAdapter.notifyDataSetChanged();
+
                 }
-                albumAdapter.setFilteredList(filteredAlbumsFromLiveData);
+            };
+        }
 
-                albumAdapter.notifyDataSetChanged();
-
-            }
-        });
+        viewModel.getFilteredAlbums(query).observe(this, filteredAlbumsObserver);
     }
-
-
-//    private void observeErrorMessage() {
-//        viewModel.getErrorMessage().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String errorMessage) {
-//                Toast.makeText(
-//                        getApplicationContext(),
-//                        errorMessage,
-//                        Toast.LENGTH_SHORT
-//                ).show();
-//            }
-//        });
-//    }
 }
