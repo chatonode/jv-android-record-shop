@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.ui.mainactivity;
+package org.northcoders.recordshopapp.ui.album;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,10 +6,10 @@ import android.view.View;
 
 import org.northcoders.recordshopapp.ui.album.add.AddNewAlbumActivity;
 
-public class MainActivityClickHandler {
+public class AlbumActivityClickHandler {
     private Context context;
 
-    public MainActivityClickHandler(Context context) {
+    public AlbumActivityClickHandler(Context context) {
         this.context = context;
     }
 

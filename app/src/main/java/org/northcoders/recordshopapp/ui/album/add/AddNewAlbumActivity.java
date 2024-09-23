@@ -17,7 +17,7 @@ import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
 import org.northcoders.recordshopapp.model.artist.Artist;
 import org.northcoders.recordshopapp.model.enums.Currency;
 import org.northcoders.recordshopapp.model.enums.Format;
-import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
+import org.northcoders.recordshopapp.ui.album.AlbumActivityViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +40,8 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_new_album);
 
-        MainActivityViewModel mainViewModel = new ViewModelProvider(this)
-                .get(MainActivityViewModel.class);
+        AlbumActivityViewModel mainViewModel = new ViewModelProvider(this)
+                .get(AlbumActivityViewModel.class);
 
         addAlbumViewModel = new ViewModelProvider(this)
                 .get(AddNewAlbumViewModel.class);

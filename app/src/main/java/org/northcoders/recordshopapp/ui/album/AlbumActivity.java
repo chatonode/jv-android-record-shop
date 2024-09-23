@@ -1,8 +1,7 @@
-package org.northcoders.recordshopapp.ui.mainactivity;
+package org.northcoders.recordshopapp.ui.album;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -19,15 +18,15 @@ import org.northcoders.recordshopapp.util.ToastManager;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private final static String TAG = MainActivity.class.getSimpleName();
+public class AlbumActivity extends AppCompatActivity {
+    private final static String TAG = AlbumActivity.class.getSimpleName();
 
     private List<Album> albumList;
 
     private AlbumAdapter albumAdapter;
     private ActivityMainBinding binding;
-    private MainActivityViewModel viewModel;
-    private MainActivityClickHandler clickHandler;
+    private AlbumActivityViewModel viewModel;
+    private AlbumActivityClickHandler clickHandler;
     private SearchView searchView;
 
     private RecyclerView recyclerView;
@@ -47,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         viewModel = new ViewModelProvider(this)
-                .get(MainActivityViewModel.class);
+                .get(AlbumActivityViewModel.class);
 
-        clickHandler = new MainActivityClickHandler(this);
+        clickHandler = new AlbumActivityClickHandler(this);
         binding.setClickHandler(clickHandler);
 
         loadAllAlbums();
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "search result size: " + filteredAlbumsFromLiveData.size());
 
                     if (filteredAlbumsFromLiveData.isEmpty()) {
-                        ToastManager.showToast(MainActivity.this, "No albums found.");
+                        ToastManager.showToast(AlbumActivity.this, "No albums found.");
                     }
                     albumAdapter.setFilteredList(filteredAlbumsFromLiveData);
 

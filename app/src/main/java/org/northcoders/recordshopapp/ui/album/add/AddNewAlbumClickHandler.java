@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
-import org.northcoders.recordshopapp.ui.mainactivity.MainActivity;
-import org.northcoders.recordshopapp.ui.mainactivity.MainActivityViewModel;
+import org.northcoders.recordshopapp.ui.album.AlbumActivity;
+import org.northcoders.recordshopapp.ui.album.AlbumActivityViewModel;
 import org.northcoders.recordshopapp.util.DataValidation;
 
 import java.util.regex.Pattern;
@@ -17,9 +17,9 @@ public class AddNewAlbumClickHandler {
 
     private NewAlbumRequestBody newAlbumRequestBody;
     private Context context;
-    private MainActivityViewModel viewModel;
+    private AlbumActivityViewModel viewModel;
 
-    public AddNewAlbumClickHandler(NewAlbumRequestBody newAlbumRequestBody, Context context, MainActivityViewModel viewModel) {
+    public AddNewAlbumClickHandler(NewAlbumRequestBody newAlbumRequestBody, Context context, AlbumActivityViewModel viewModel) {
         this.newAlbumRequestBody = newAlbumRequestBody;
         this.context = context;
         this.viewModel = viewModel;
@@ -57,7 +57,7 @@ public class AddNewAlbumClickHandler {
             return;
         }
 
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, AlbumActivity.class);
 
         NewAlbumRequestBody validatedNewAlbum = new NewAlbumRequestBody(
                 newAlbumRequestBody.getNewAlbumTitle(),
@@ -82,7 +82,7 @@ public class AddNewAlbumClickHandler {
     }
 
     public void onBackButtonClicked(View view) {
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, AlbumActivity.class);
 
         context.startActivity(intent);
     }

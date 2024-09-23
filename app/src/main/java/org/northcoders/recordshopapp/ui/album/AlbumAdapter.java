@@ -1,4 +1,4 @@
-package org.northcoders.recordshopapp.ui.mainactivity;
+package org.northcoders.recordshopapp.ui.album;
 
 import android.content.Context;
 import android.util.Log;
