@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.ActivityMainBinding;
 import org.northcoders.recordshopapp.model.album.Album;
+import org.northcoders.recordshopapp.util.ToastManager;
 
 import java.util.List;
 
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "search result size: " + filteredAlbumsFromLiveData.size());
 
                     if (filteredAlbumsFromLiveData.isEmpty()) {
-                        Toast.makeText(MainActivity.this, "No albums found.", Toast.LENGTH_SHORT).show();
+                        ToastManager.showToast(MainActivity.this, "No albums found.");
                     }
                     albumAdapter.setFilteredList(filteredAlbumsFromLiveData);
 
