@@ -10,6 +10,7 @@
             type="org.northcoders.recordshopapp.ui.mainactivity.MainActivityClickHandler" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -20,21 +21,34 @@
         <ImageView
             android:id="@+id/imageView_banner_image"
             android:layout_width="wrap_content"
-            android:layout_height="410dp"
+            android:layout_height="wrap_content"
             android:alpha="0.7"
             android:contentDescription="@string/banner_image_alt_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/record_shop_banner_image" />
 
+        <com.google.android.material.search.SearchView
+            android:id="@+id/searchView_album_filter"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/search_view_album_filter_background"
+            app:layout_constraintBottom_toTopOf="@id/album_recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_banner_image" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/album_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="319dp"
+            android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_banner_image" />
+            app:layout_constraintTop_toBottomOf="@+id/searchView_album_filter"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton_add_new_album"
