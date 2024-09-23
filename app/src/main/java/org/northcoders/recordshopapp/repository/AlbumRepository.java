@@ -13,6 +13,7 @@ import org.northcoders.recordshopapp.dto.album.post.NewAlbumResponse;
 import org.northcoders.recordshopapp.service.AlbumApiService;
 import org.northcoders.recordshopapp.service.RetrofitInstanceProvider;
 import org.northcoders.recordshopapp.util.ErrorResponseHandler;
+import org.northcoders.recordshopapp.util.ToastManager;
 
 import java.util.List;
 
@@ -120,11 +121,10 @@ public class AlbumRepository {
                 );
 
                 // TODO: Remove it and use albumsData as live data in VM, Activity, and UI
-                Toast.makeText(
+                ToastManager.showToast(
                         application.getApplicationContext(),
-                        modifiedSuccessMessage,
-                        Toast.LENGTH_SHORT
-                ).show();
+                        modifiedSuccessMessage
+                );
 
                 Log.d(TAG, modifiedSuccessMessage);
             }
