@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityClickHandler clickHandler;
 
     private RecyclerView recyclerView;
-    private SearchView searchView;
+//    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +51,18 @@ public class MainActivity extends AppCompatActivity {
         binding.setClickHandler(clickHandler);
 
         observeAllAlbums();
+
 //        observeErrorMessage();
 
-        searchView = findViewById(R.id.searchView_album_filter);
-        searchView.clearFocus();
+//        searchView = findViewById(R.id.searchView_album_filter);
+//        searchView.clearFocus();
         setSearchViewListeners();
     }
 
     private void setSearchViewListeners() {
+        SearchView searchView = binding.searchViewAlbumFilter;
+        searchView.clearFocus();
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -70,7 +74,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filterList(newText);
+                if (!newText.isBlank()) {
+                    observeFilteredAlbums(newText.toLowerCase());
+                } else {
+                    // If search is cleared, show all albums
+                    albumAdapter.setFilteredList(albumList);
+                }
 
                 return true;
             }
@@ -103,32 +112,20 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getFilteredAlbums(query).observe(this, new Observer<List<Album>>() {
             @Override
             public void onChanged(List<Album> filteredAlbumsFromLiveData) {
-                albumList = filteredAlbumsFromLiveData;
+                Log.d(TAG, query + " result size: " + filteredAlbumsFromLiveData.size());
+
+                // Check if results are empty and update the adapter
+                if (filteredAlbumsFromLiveData.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "No albums found.", Toast.LENGTH_SHORT).show();
+                }
+                albumAdapter.setFilteredList(filteredAlbumsFromLiveData);
+
+                albumAdapter.notifyDataSetChanged();
 
             }
         });
     }
 
-
-    private void filterList(String query) {
-        // new arrayList to hold filtered items
-
-        // fetch data from the api
-        if (!query.isBlank()) {
-            observeFilteredAlbums(query);
-
-            Log.d(TAG, query + " filter result size: " + albumList.size());
-
-            if (albumList.isEmpty()) {
-                Toast.makeText(MainActivity.this, "No albums found.", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            albumAdapter.setFilteredList(albumList);
-        }
-
-        // pass filtered list of books to recyclerView
-    }
 
 //    private void observeErrorMessage() {
 //        viewModel.getErrorMessage().observe(this, new Observer<String>() {

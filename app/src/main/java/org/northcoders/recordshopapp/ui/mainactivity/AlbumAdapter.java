@@ -19,7 +19,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
     private final static String TAG = AlbumAdapter.class.getSimpleName();
     private Context context;
     private List<Album> albumItems;
-    private List<Album> filteredAlbumItems;
 
     public AlbumAdapter(Context context, List<Album> albumItems) {
         this.context = context;
@@ -55,12 +54,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
 
         Log.d(TAG, "albumItems.size(): " + albumItems.size());
 
-        if (filteredAlbumItems != null && !filteredAlbumItems.isEmpty()) {
-            Album filteredAlbumItem = filteredAlbumItems.get(position);
-            Log.d(TAG, "filteredAlbumItems.size(): " + filteredAlbumItems.size());
-            holder.albumItemLayoutBinding.setAlbum(filteredAlbumItem);
-        }
-
         Album albumItem = albumItems.get(position);
 
         holder.albumItemLayoutBinding.setAlbum(albumItem);
@@ -73,7 +66,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumItemVie
 
     public void setFilteredList(List<Album> filteredAlbumList) {
         this.albumItems = filteredAlbumList;
-        notifyDataSetChanged();
     }
 
 
