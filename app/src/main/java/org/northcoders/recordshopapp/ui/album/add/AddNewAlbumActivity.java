@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
 import org.northcoders.recordshopapp.R;
 import org.northcoders.recordshopapp.databinding.ActivityAddNewAlbumBinding;
 import org.northcoders.recordshopapp.dto.album.post.NewAlbumRequestBody;
@@ -56,9 +59,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         newAlbumFields = new NewAlbumRequestBody();
         newAlbumFields.setNewAlbumTitle("");
         // TODO: Make it dynamic!
-        newAlbumFields.setNewAlbumArtistIds(new ArrayList<Long>() {{
-            add(1L);
-        }});
+        newAlbumFields.setNewAlbumArtistIds(new ArrayList<>());
         // TODO: Make it dynamic!
         newAlbumFields.setNewAlbumGenreIds(new ArrayList<Long>() {{
             add(1L);
@@ -86,30 +87,31 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
                 Log.e(TAG, "artistList.size(): " + artistList.size());
 
+                populateArtistChips(artistList);
+
             }
         });
     }
 
-    //    public void populateArtistChips(List<String> artistNames) {
-//        ChipGroup chipGroup = findViewById(R.id.chipGroup_album_field_artists);
-//        chipGroup.animate();
-//        chipGroup.removeAllViews(); // Clear existing chips
-//
-//        for (String artistName : artistNames) {
-//            Chip chip = new Chip(context);
-//            chip.setText(artistName);
-//            chip.setCheckable(true);
-//
-//            // Set click listener to handle chip selection
-//            chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                if (isChecked) {
-//                    newAlbumRequestBody.getNewAlbumArtistIds().add(/* get artist ID */);
-//                } else {
-//                    newAlbumRequestBody.getNewAlbumArtistIds().remove(/* get artist ID */);
-//                }
-//            });
-//
-//            chipGroup.addView(chip);
-//        }
-//    }
+    private void populateArtistChips(List<Artist> artists) {
+        ChipGroup chipGroup = binding.chipGroupAlbumFieldArtists;
+        chipGroup.removeAllViews(); // Clear existing chips
+
+        for (Artist artist : artists) {
+            Chip chip = new Chip(this);
+            chip.setText(artist.getArtistFullName());
+            chip.setCheckable(true);
+
+            // Set click listener for chip selection
+            chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    newAlbumFields.getNewAlbumArtistIds().add(artist.getArtistId());
+                } else {
+                    newAlbumFields.getNewAlbumArtistIds().remove(artist.getArtistId());
+                }
+            });
+
+            chipGroup.addView(chip);
+        }
+    }
 }
